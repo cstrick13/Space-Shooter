@@ -1,2 +1,2 @@
 # Space-Shooter
-Space-Sgooter for CSC 447
+Space-Shooter for CSC 447
