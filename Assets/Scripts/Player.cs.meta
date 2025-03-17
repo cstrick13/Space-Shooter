@@ -3,7 +3,12 @@ guid: 902090622cad9494282380464d0b67cb
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bulletPrefab: {instanceID: 0}
+  - torpedoPrefab: {instanceID: 0}
+  - spawnPt: {instanceID: 0}
+  - dronePrefab: {fileID: 1509478454200413779, guid: d8ed15c28c4709544990216a0e665434, type: 3}
+  - enemySpawn: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

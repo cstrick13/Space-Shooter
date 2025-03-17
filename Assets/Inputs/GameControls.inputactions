@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DevSpawnDrone",
+                    "type": "Button",
+                    "id": "204b849e-5861-4814-9afa-d7af0b7c00e1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -256,6 +265,17 @@
                     "action": "ShootTorpedo",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "c528a9dc-9789-45d9-a8c6-2610a854c4c1",
+                    "path": "<Keyboard>/semicolon",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DevSpawnDrone",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

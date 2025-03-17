@@ -7,6 +7,12 @@ public class Player : MonoBehaviour{
     public GameObject bulletPrefab;
     public GameObject torpedoPrefab;
     public Transform spawnPt;
+
+    //Dev objects
+    public GameObject dronePrefab;
+    public Transform enemySpawn;
+    public bool DEBUG;
+
     // Start is called before the first frame update
     void Start() {
         
@@ -24,6 +30,16 @@ public class Player : MonoBehaviour{
             var torpedo = Instantiate(torpedoPrefab);
             torpedo.transform.position = spawnPt.position;
         }
+        // DEV TOOLS/CHEATS, TO BE DELETED IN FINAL VERSION!
+        if (DEBUG == true)
+        {
+            if (input.DevSpawnDrone.WasPressedThisFrame())
+            {
+                var droneEnemy = Instantiate(dronePrefab);
+                droneEnemy.transform.position = enemySpawn.position;
+            }
+        }
+        //DEV TOOLS/
         transform.Translate (Vector3.up * moveSpeed * Time.deltaTime * input.FlyUp.ReadValue<float>());
         transform.Translate (Vector3.down * moveSpeed * Time.deltaTime * input.FlyDown.ReadValue<float>());
         transform.Translate (Vector3.left * moveSpeed * Time.deltaTime * input.FlyLeft.ReadValue<float>());

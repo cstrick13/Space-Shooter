@@ -479,6 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04900af0e1f5ede4e99360c977b9aebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DEBUG: 1
 --- !u!4 &557962292
 Transform:
   m_ObjectHideFlags: 0
@@ -487,8 +488,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557962290}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.0716066, y: 0.5538451, z: 0.039195348}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.0716066, y: 0.5538451, z: 0.03919506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -841,8 +842,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   bulletPrefab: {fileID: 4884306090933430485, guid: 2bc99b9994406e1458f3c87522ec01e0, type: 3}
-  torpedoPrefab: {fileID: 272009183582335358, guid: aa50da824e2de5b47983ef86c63c6d9d, type: 3}
+  torpedoPrefab: {fileID: 234949838605084161, guid: 7b310b5c523953c4c8b246f953e308a6, type: 3}
   spawnPt: {fileID: 697111182}
+  dronePrefab: {fileID: 1509478454200413779, guid: d8ed15c28c4709544990216a0e665434, type: 3}
+  enemySpawn: {fileID: 1202803861}
 --- !u!50 &1009114147
 Rigidbody2D:
   serializedVersion: 4
@@ -1160,6 +1163,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170522957}
   m_CullTransparentMesh: 1
+--- !u!1 &1202803860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1202803861}
+  m_Layer: 0
+  m_Name: DevSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1202803861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202803860}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.03, y: -0.35, z: -0.052793}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1240381213
 GameObject:
   m_ObjectHideFlags: 0
@@ -6761,3 +6795,4 @@ SceneRoots:
   - {fileID: 124618087}
   - {fileID: 170504226}
   - {fileID: 588483747}
+  - {fileID: 1202803861}
