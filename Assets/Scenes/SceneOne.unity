@@ -839,8 +839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902090622cad9494282380464d0b67cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  moveSpeed: 8
   bulletPrefab: {fileID: 4884306090933430485, guid: 2bc99b9994406e1458f3c87522ec01e0, type: 3}
+  torpedoPrefab: {fileID: 272009183582335358, guid: aa50da824e2de5b47983ef86c63c6d9d, type: 3}
   spawnPt: {fileID: 697111182}
 --- !u!50 &1009114147
 Rigidbody2D:

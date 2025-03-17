@@ -80,6 +80,15 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShootTorpedo"",
+                    ""type"": ""Button"",
+                    ""id"": ""b2099a83-905a-4cae-a46f-214c48a6e5f5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,83 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""238918b6-84cb-41f3-ab79-9700ddb8e670"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootTorpedo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""1f46a86b-29cb-4405-be20-2897c5a42bf4"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootTorpedo"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""591518d6-9595-4375-b482-97bafa826473"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootTorpedo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""b3774175-2493-4a30-8af9-c2991d66a22c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootTorpedo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""4cb659cb-167e-4cae-b1a5-2c3ddab2fa3b"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootTorpedo"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""a7a76cc5-2eac-42ef-94fd-98cc44923450"",
+                    ""path"": ""<Keyboard>/leftAlt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootTorpedo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""6a5a05dd-ee13-46c6-9ef9-baab45ee343c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootTorpedo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -206,6 +292,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Standard_FlyRight = m_Standard.FindAction("FlyRight", throwIfNotFound: true);
         m_Standard_FlyLeft = m_Standard.FindAction("FlyLeft", throwIfNotFound: true);
         m_Standard_Left = m_Standard.FindAction("Left", throwIfNotFound: true);
+        m_Standard_ShootTorpedo = m_Standard.FindAction("ShootTorpedo", throwIfNotFound: true);
     }
 
     ~@GameControls()
@@ -278,6 +365,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Standard_FlyRight;
     private readonly InputAction m_Standard_FlyLeft;
     private readonly InputAction m_Standard_Left;
+    private readonly InputAction m_Standard_ShootTorpedo;
     public struct StandardActions
     {
         private @GameControls m_Wrapper;
@@ -288,6 +376,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         public InputAction @FlyRight => m_Wrapper.m_Standard_FlyRight;
         public InputAction @FlyLeft => m_Wrapper.m_Standard_FlyLeft;
         public InputAction @Left => m_Wrapper.m_Standard_Left;
+        public InputAction @ShootTorpedo => m_Wrapper.m_Standard_ShootTorpedo;
         public InputActionMap Get() { return m_Wrapper.m_Standard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -315,6 +404,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Left.started += instance.OnLeft;
             @Left.performed += instance.OnLeft;
             @Left.canceled += instance.OnLeft;
+            @ShootTorpedo.started += instance.OnShootTorpedo;
+            @ShootTorpedo.performed += instance.OnShootTorpedo;
+            @ShootTorpedo.canceled += instance.OnShootTorpedo;
         }
 
         private void UnregisterCallbacks(IStandardActions instance)
@@ -337,6 +429,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Left.started -= instance.OnLeft;
             @Left.performed -= instance.OnLeft;
             @Left.canceled -= instance.OnLeft;
+            @ShootTorpedo.started -= instance.OnShootTorpedo;
+            @ShootTorpedo.performed -= instance.OnShootTorpedo;
+            @ShootTorpedo.canceled -= instance.OnShootTorpedo;
         }
 
         public void RemoveCallbacks(IStandardActions instance)
@@ -362,5 +457,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnFlyRight(InputAction.CallbackContext context);
         void OnFlyLeft(InputAction.CallbackContext context);
         void OnLeft(InputAction.CallbackContext context);
+        void OnShootTorpedo(InputAction.CallbackContext context);
     }
 }

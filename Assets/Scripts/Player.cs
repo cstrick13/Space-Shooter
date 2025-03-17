@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour{
     public float moveSpeed;
     public GameObject bulletPrefab;
+    public GameObject torpedoPrefab;
     public Transform spawnPt;
     // Start is called before the first frame update
     void Start() {
@@ -17,6 +18,11 @@ public class Player : MonoBehaviour{
         if (input.ShootBullet.WasPressedThisFrame()){
             var bullet = Instantiate(bulletPrefab);
             bullet.transform.position = spawnPt.position;
+        }
+        if (input.ShootTorpedo.WasPressedThisFrame())
+        {
+            var torpedo = Instantiate(torpedoPrefab);
+            torpedo.transform.position = spawnPt.position;
         }
         transform.Translate (Vector3.up * moveSpeed * Time.deltaTime * input.FlyUp.ReadValue<float>());
         transform.Translate (Vector3.down * moveSpeed * Time.deltaTime * input.FlyDown.ReadValue<float>());
