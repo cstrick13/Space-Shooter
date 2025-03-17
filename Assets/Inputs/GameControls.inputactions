@@ -1,0 +1,34 @@
+{
+    "name": "GameControls",
+    "maps": [
+        {
+            "name": "Standard",
+            "id": "84951fb9-a143-4f6a-ab31-511a3fd3d423",
+            "actions": [
+                {
+                    "name": "ShootBullet",
+                    "type": "Button",
+                    "id": "39bdf5b1-16f9-4f33-b012-7941f9824ab1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f3064b8d-36cf-495e-bdf7-f4e5fa507df2",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootBullet",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
