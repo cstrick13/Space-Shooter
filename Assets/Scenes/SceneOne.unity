@@ -191,7 +191,7 @@ Transform:
   m_GameObject: {fileID: 697111181}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.28, y: -0.08, z: 0}
+  m_LocalPosition: {x: 0.849, y: 0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -223,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 1009114144}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12213783, y: -0.28750423, z: 0.04804271}
+  m_LocalPosition: {x: -0.81, y: -1.29, z: 0.04804271}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 1709508979}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: Sprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -273,7 +273,7 @@ Transform:
   m_GameObject: {fileID: 1709508977}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: 1.46, y: -0.07, z: -0.04804271}
+  m_LocalPosition: {x: 0.02, y: 0.03, z: 0.04804271}
   m_LocalScale: {x: 1.2608173, y: 1.4041978, z: 5.107159}
   m_ConstrainProportionsScale: 0
   m_Children: []
