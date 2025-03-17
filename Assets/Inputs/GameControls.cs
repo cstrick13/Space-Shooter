@@ -35,6 +35,51 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FlyUp"",
+                    ""type"": ""Value"",
+                    ""id"": ""48c642f0-35e6-4af3-8a5b-20cfa9a7ca50"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""FlyDown"",
+                    ""type"": ""Value"",
+                    ""id"": ""6c8bebd2-357f-42a8-99ba-6075ce0f2417"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""FlyRight"",
+                    ""type"": ""Value"",
+                    ""id"": ""ab917ff4-74a7-464c-957b-7bcf229221b5"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""FlyLeft"",
+                    ""type"": ""Value"",
+                    ""id"": ""cfd4a8b4-9a2c-44f6-bc04-88a8605aa0d1"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""5914fc76-3920-42eb-b7d1-74b37ab971d7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +93,105 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""ShootBullet"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f912fc53-952b-434d-a2f9-2b3795f4f6da"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlyUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8be1ac64-ff81-4d7f-9e9d-90af565e773f"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlyUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05f77d96-a9f0-4b07-9b31-8e70874f5f88"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlyDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b02027dc-b77f-4eb3-a525-d74f7e142e75"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlyDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""825116a7-21a6-4ade-ad9a-4f1519c4696d"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlyRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25753908-5833-4403-a073-ba44cb23b5ee"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlyRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a0e6412c-be5e-4c46-ac43-fadb0f5ca989"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlyLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3528e21-1de6-42c3-8171-26766ca29fc8"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlyLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2cf457c9-e20d-4f48-bfd1-01505d7aea03"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +201,11 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         // Standard
         m_Standard = asset.FindActionMap("Standard", throwIfNotFound: true);
         m_Standard_ShootBullet = m_Standard.FindAction("ShootBullet", throwIfNotFound: true);
+        m_Standard_FlyUp = m_Standard.FindAction("FlyUp", throwIfNotFound: true);
+        m_Standard_FlyDown = m_Standard.FindAction("FlyDown", throwIfNotFound: true);
+        m_Standard_FlyRight = m_Standard.FindAction("FlyRight", throwIfNotFound: true);
+        m_Standard_FlyLeft = m_Standard.FindAction("FlyLeft", throwIfNotFound: true);
+        m_Standard_Left = m_Standard.FindAction("Left", throwIfNotFound: true);
     }
 
     ~@GameControls()
@@ -124,11 +273,21 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Standard;
     private List<IStandardActions> m_StandardActionsCallbackInterfaces = new List<IStandardActions>();
     private readonly InputAction m_Standard_ShootBullet;
+    private readonly InputAction m_Standard_FlyUp;
+    private readonly InputAction m_Standard_FlyDown;
+    private readonly InputAction m_Standard_FlyRight;
+    private readonly InputAction m_Standard_FlyLeft;
+    private readonly InputAction m_Standard_Left;
     public struct StandardActions
     {
         private @GameControls m_Wrapper;
         public StandardActions(@GameControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @ShootBullet => m_Wrapper.m_Standard_ShootBullet;
+        public InputAction @FlyUp => m_Wrapper.m_Standard_FlyUp;
+        public InputAction @FlyDown => m_Wrapper.m_Standard_FlyDown;
+        public InputAction @FlyRight => m_Wrapper.m_Standard_FlyRight;
+        public InputAction @FlyLeft => m_Wrapper.m_Standard_FlyLeft;
+        public InputAction @Left => m_Wrapper.m_Standard_Left;
         public InputActionMap Get() { return m_Wrapper.m_Standard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -141,6 +300,21 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @ShootBullet.started += instance.OnShootBullet;
             @ShootBullet.performed += instance.OnShootBullet;
             @ShootBullet.canceled += instance.OnShootBullet;
+            @FlyUp.started += instance.OnFlyUp;
+            @FlyUp.performed += instance.OnFlyUp;
+            @FlyUp.canceled += instance.OnFlyUp;
+            @FlyDown.started += instance.OnFlyDown;
+            @FlyDown.performed += instance.OnFlyDown;
+            @FlyDown.canceled += instance.OnFlyDown;
+            @FlyRight.started += instance.OnFlyRight;
+            @FlyRight.performed += instance.OnFlyRight;
+            @FlyRight.canceled += instance.OnFlyRight;
+            @FlyLeft.started += instance.OnFlyLeft;
+            @FlyLeft.performed += instance.OnFlyLeft;
+            @FlyLeft.canceled += instance.OnFlyLeft;
+            @Left.started += instance.OnLeft;
+            @Left.performed += instance.OnLeft;
+            @Left.canceled += instance.OnLeft;
         }
 
         private void UnregisterCallbacks(IStandardActions instance)
@@ -148,6 +322,21 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @ShootBullet.started -= instance.OnShootBullet;
             @ShootBullet.performed -= instance.OnShootBullet;
             @ShootBullet.canceled -= instance.OnShootBullet;
+            @FlyUp.started -= instance.OnFlyUp;
+            @FlyUp.performed -= instance.OnFlyUp;
+            @FlyUp.canceled -= instance.OnFlyUp;
+            @FlyDown.started -= instance.OnFlyDown;
+            @FlyDown.performed -= instance.OnFlyDown;
+            @FlyDown.canceled -= instance.OnFlyDown;
+            @FlyRight.started -= instance.OnFlyRight;
+            @FlyRight.performed -= instance.OnFlyRight;
+            @FlyRight.canceled -= instance.OnFlyRight;
+            @FlyLeft.started -= instance.OnFlyLeft;
+            @FlyLeft.performed -= instance.OnFlyLeft;
+            @FlyLeft.canceled -= instance.OnFlyLeft;
+            @Left.started -= instance.OnLeft;
+            @Left.performed -= instance.OnLeft;
+            @Left.canceled -= instance.OnLeft;
         }
 
         public void RemoveCallbacks(IStandardActions instance)
@@ -168,5 +357,10 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     public interface IStandardActions
     {
         void OnShootBullet(InputAction.CallbackContext context);
+        void OnFlyUp(InputAction.CallbackContext context);
+        void OnFlyDown(InputAction.CallbackContext context);
+        void OnFlyRight(InputAction.CallbackContext context);
+        void OnFlyLeft(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
     }
 }

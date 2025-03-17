@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour{
+    public float moveSpeed;
     public GameObject bulletPrefab;
     public Transform spawnPt;
     // Start is called before the first frame update
@@ -17,5 +18,9 @@ public class Player : MonoBehaviour{
             var bullet = Instantiate(bulletPrefab);
             bullet.transform.position = spawnPt.position;
         }
+        transform.Translate (Vector3.up * moveSpeed * Time.deltaTime * input.FlyUp.ReadValue<float>());
+        transform.Translate (Vector3.down * moveSpeed * Time.deltaTime * input.FlyDown.ReadValue<float>());
+        transform.Translate (Vector3.left * moveSpeed * Time.deltaTime * input.FlyLeft.ReadValue<float>());
+        transform.Translate (Vector3.right * moveSpeed * Time.deltaTime * input.FlyRight.ReadValue<float>());
     }
 }
