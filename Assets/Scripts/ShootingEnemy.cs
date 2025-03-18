@@ -25,6 +25,7 @@ public class ShootingEnemy : MonoBehaviour
     {
         //Find the point x amount in front of players current position to move towards.
         Vector3 align = new Vector3((target.transform.position.x+dFromPlayer),target.transform.position.y,target.transform.position.z);
+        //Move towards player
         if (target.transform.position != this.transform.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, align, moveSpeed * Time.deltaTime);
@@ -33,7 +34,6 @@ public class ShootingEnemy : MonoBehaviour
         {
             if (bulletPrefab != null)
             {
-                print("shooting!");
                 var bullet = Instantiate(bulletPrefab);
                 bullet.transform.position = spawnPt.position;
             }

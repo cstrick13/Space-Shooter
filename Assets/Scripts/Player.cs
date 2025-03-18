@@ -25,11 +25,13 @@ public class Player : MonoBehaviour{
         if (input.ShootBullet.WasPressedThisFrame()){
             var bullet = Instantiate(bulletPrefab);
             bullet.transform.position = spawnPt.position;
+            Destroy(bullet, 2f);
         }
         if (input.ShootTorpedo.WasPressedThisFrame())
         {
             var torpedo = Instantiate(torpedoPrefab);
             torpedo.transform.position = spawnPt.position;
+            Destroy(torpedo, 2f);
         }
         // DEV TOOLS/CHEATS, TO BE DELETED IN FINAL VERSION!
         if (DEBUG == true)
@@ -45,7 +47,8 @@ public class Player : MonoBehaviour{
                 shootingEnemy.transform.position = enemySpawn.position;
             }
         }
-        //DEV TOOLS/
+        //DEV TOOLS ABOVE
+
         transform.Translate (Vector3.up * moveSpeed * Time.deltaTime * input.FlyUp.ReadValue<float>());
         transform.Translate (Vector3.down * moveSpeed * Time.deltaTime * input.FlyDown.ReadValue<float>());
         transform.Translate (Vector3.left * moveSpeed * Time.deltaTime * input.FlyLeft.ReadValue<float>());

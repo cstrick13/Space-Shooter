@@ -16,7 +16,6 @@ public class DroneEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(target.transform.position);
         if (target.transform.position != this.transform.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
