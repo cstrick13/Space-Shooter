@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 124618086}
   - component: {fileID: 124618085}
   - component: {fileID: 124618084}
+  - component: {fileID: 124618088}
   m_Layer: 5
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -307,6 +308,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &124618088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124618083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d4c52b3dd734d4698d40bb40bfa509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  moveSpeed: 0
+  dFromPlayer: 0
+  bulletPrefab: {fileID: 0}
+  spawnPt: {fileID: 0}
+  delayShoot: 100
 --- !u!1 &170504223
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04900af0e1f5ede4e99360c977b9aebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DEBUG: 1
 --- !u!4 &557962292
 Transform:
   m_ObjectHideFlags: 0
@@ -845,7 +863,9 @@ MonoBehaviour:
   torpedoPrefab: {fileID: 234949838605084161, guid: 7b310b5c523953c4c8b246f953e308a6, type: 3}
   spawnPt: {fileID: 697111182}
   dronePrefab: {fileID: 1509478454200413779, guid: d8ed15c28c4709544990216a0e665434, type: 3}
+  shooterPrefab: {fileID: 8832088067792915327, guid: 6a44d66e28b07db4fa45b4a66dd66981, type: 3}
   enemySpawn: {fileID: 1202803861}
+  DEBUG: 1
 --- !u!50 &1009114147
 Rigidbody2D:
   serializedVersion: 4
