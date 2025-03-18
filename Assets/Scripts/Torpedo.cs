@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Torpedo : MonoBehaviour
 {
-    private int time = 0;
+    private int timer = 0;
     private Rigidbody2D torpedoRigid;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class Torpedo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (time > 100)
+        if (timer > 100)
         {
             torpedoRigid.gravityScale = 0.0f;
             //Vector for negating the velocity from initial gravity(for now, value manually adjusted)
@@ -28,8 +28,8 @@ public class Torpedo : MonoBehaviour
         else
         {
             torpedoRigid.gravityScale = 1.0f;
-            time += 1;
-            print(time);
+            timer += 1;
+            print(timer);
         }
         //transform.Translate(Vector3.right * 25 * Time.deltaTime);
     }

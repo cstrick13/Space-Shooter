@@ -98,6 +98,15 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DevSpawnEnemyShooter"",
+                    ""type"": ""Button"",
+                    ""id"": ""e6e1346a-4b1b-4106-b7f4-0cc46838ce27"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -298,6 +307,17 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""DevSpawnDrone"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""45983142-aa89-42f5-8982-0ee1d6c8771f"",
+                    ""path"": ""<Keyboard>/quote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DevSpawnEnemyShooter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -314,6 +334,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Standard_Left = m_Standard.FindAction("Left", throwIfNotFound: true);
         m_Standard_ShootTorpedo = m_Standard.FindAction("ShootTorpedo", throwIfNotFound: true);
         m_Standard_DevSpawnDrone = m_Standard.FindAction("DevSpawnDrone", throwIfNotFound: true);
+        m_Standard_DevSpawnEnemyShooter = m_Standard.FindAction("DevSpawnEnemyShooter", throwIfNotFound: true);
     }
 
     ~@GameControls()
@@ -388,6 +409,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Standard_Left;
     private readonly InputAction m_Standard_ShootTorpedo;
     private readonly InputAction m_Standard_DevSpawnDrone;
+    private readonly InputAction m_Standard_DevSpawnEnemyShooter;
     public struct StandardActions
     {
         private @GameControls m_Wrapper;
@@ -400,6 +422,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         public InputAction @Left => m_Wrapper.m_Standard_Left;
         public InputAction @ShootTorpedo => m_Wrapper.m_Standard_ShootTorpedo;
         public InputAction @DevSpawnDrone => m_Wrapper.m_Standard_DevSpawnDrone;
+        public InputAction @DevSpawnEnemyShooter => m_Wrapper.m_Standard_DevSpawnEnemyShooter;
         public InputActionMap Get() { return m_Wrapper.m_Standard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -433,6 +456,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @DevSpawnDrone.started += instance.OnDevSpawnDrone;
             @DevSpawnDrone.performed += instance.OnDevSpawnDrone;
             @DevSpawnDrone.canceled += instance.OnDevSpawnDrone;
+            @DevSpawnEnemyShooter.started += instance.OnDevSpawnEnemyShooter;
+            @DevSpawnEnemyShooter.performed += instance.OnDevSpawnEnemyShooter;
+            @DevSpawnEnemyShooter.canceled += instance.OnDevSpawnEnemyShooter;
         }
 
         private void UnregisterCallbacks(IStandardActions instance)
@@ -461,6 +487,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @DevSpawnDrone.started -= instance.OnDevSpawnDrone;
             @DevSpawnDrone.performed -= instance.OnDevSpawnDrone;
             @DevSpawnDrone.canceled -= instance.OnDevSpawnDrone;
+            @DevSpawnEnemyShooter.started -= instance.OnDevSpawnEnemyShooter;
+            @DevSpawnEnemyShooter.performed -= instance.OnDevSpawnEnemyShooter;
+            @DevSpawnEnemyShooter.canceled -= instance.OnDevSpawnEnemyShooter;
         }
 
         public void RemoveCallbacks(IStandardActions instance)
@@ -488,5 +517,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnLeft(InputAction.CallbackContext context);
         void OnShootTorpedo(InputAction.CallbackContext context);
         void OnDevSpawnDrone(InputAction.CallbackContext context);
+        void OnDevSpawnEnemyShooter(InputAction.CallbackContext context);
     }
 }

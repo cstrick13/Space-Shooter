@@ -10,6 +10,7 @@ public class Player : MonoBehaviour{
 
     //Dev objects
     public GameObject dronePrefab;
+    public GameObject shooterPrefab;
     public Transform enemySpawn;
     public bool DEBUG;
 
@@ -37,6 +38,11 @@ public class Player : MonoBehaviour{
             {
                 var droneEnemy = Instantiate(dronePrefab);
                 droneEnemy.transform.position = enemySpawn.position;
+            }
+            if (input.DevSpawnEnemyShooter.WasPressedThisFrame())
+            {
+                var shootingEnemy = Instantiate(shooterPrefab);
+                shootingEnemy.transform.position = enemySpawn.position;
             }
         }
         //DEV TOOLS/

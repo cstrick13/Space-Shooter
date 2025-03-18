@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DevSpawnEnemyShooter",
+                    "type": "Button",
+                    "id": "e6e1346a-4b1b-4106-b7f4-0cc46838ce27",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -274,6 +283,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "DevSpawnDrone",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "45983142-aa89-42f5-8982-0ee1d6c8771f",
+                    "path": "<Keyboard>/quote",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DevSpawnEnemyShooter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
