@@ -785,6 +785,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 113558776585387563, guid: a4da7ac4220f30e0289116ea1f688f32, type: 3}
+  droneEnemyPrefab: {fileID: 1509478454200413779, guid: d8ed15c28c4709544990216a0e665434, type: 3}
+  bulletEnemyPrefab: {fileID: 3555353050894527384, guid: eb70c814eaee65e409828064ee57a906, type: 3}
   enemyTimer: 0
 --- !u!4 &557962292
 Transform:
