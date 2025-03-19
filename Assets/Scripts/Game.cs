@@ -10,6 +10,8 @@ public class Game : MonoBehaviour
     //public bool DEBUG;
     public GameObject enemyPrefab;
     public GameObject droneEnemyPrefab;
+
+    public GameObject shootingEnemyPrefab;
     public TextMeshProUGUI txtScore;
 
     public GameObject bulletEnemyPrefab;
@@ -34,6 +36,7 @@ public class Game : MonoBehaviour
             Instantiate(enemyPrefab);
             Instantiate(droneEnemyPrefab);
             Instantiate(bulletEnemyPrefab);
+            Instantiate(shootingEnemyPrefab);
             enemyTimer = Random.Range(2f,7f);
         }
 
