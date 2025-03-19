@@ -10,14 +10,15 @@ public class HeatSeeker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Setting initial variables
+        //Find the nearest "Enemy" on projectile creation
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Enemy");
-        print(targets.Length);
         Vector3 currentPos = transform.position;
-        float minDistance = 0f;
+        float minDistance = 1000f;
         foreach (GameObject target in targets)
         {
+            print(target.name);
             float distance = Vector3.Distance(currentPos, target.transform.position);
+            print(distance < minDistance);
             if (distance < minDistance)
             {
                 nearest = target;
@@ -31,12 +32,7 @@ public class HeatSeeker : MonoBehaviour
     {
         if (nearest != null)
         {
-            //print("Moving towards enemy");
             transform.position = Vector3.MoveTowards(transform.position, nearest.transform.position, moveSpeed * Time.deltaTime);
-        }
-        else
-        {
-            //print("No enemy nearby");
         }
     }
 }
