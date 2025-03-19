@@ -107,6 +107,15 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShootSeeker"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c14eda0-f283-43eb-a92c-5cf85349b758"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -318,6 +327,50 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""DevSpawnEnemyShooter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""666858a4-af1c-4dac-9435-5bf3100d9123"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootSeeker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""a28737e8-e663-433e-9172-b8cdcc92fb51"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootSeeker"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""b58265f3-2b7a-452c-9f3e-1d4243daaf70"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootSeeker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""abe630be-6efe-48cc-a088-05c182a73e0f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootSeeker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -335,6 +388,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Standard_ShootTorpedo = m_Standard.FindAction("ShootTorpedo", throwIfNotFound: true);
         m_Standard_DevSpawnDrone = m_Standard.FindAction("DevSpawnDrone", throwIfNotFound: true);
         m_Standard_DevSpawnEnemyShooter = m_Standard.FindAction("DevSpawnEnemyShooter", throwIfNotFound: true);
+        m_Standard_ShootSeeker = m_Standard.FindAction("ShootSeeker", throwIfNotFound: true);
     }
 
     ~@GameControls()
@@ -410,6 +464,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Standard_ShootTorpedo;
     private readonly InputAction m_Standard_DevSpawnDrone;
     private readonly InputAction m_Standard_DevSpawnEnemyShooter;
+    private readonly InputAction m_Standard_ShootSeeker;
     public struct StandardActions
     {
         private @GameControls m_Wrapper;
@@ -423,6 +478,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         public InputAction @ShootTorpedo => m_Wrapper.m_Standard_ShootTorpedo;
         public InputAction @DevSpawnDrone => m_Wrapper.m_Standard_DevSpawnDrone;
         public InputAction @DevSpawnEnemyShooter => m_Wrapper.m_Standard_DevSpawnEnemyShooter;
+        public InputAction @ShootSeeker => m_Wrapper.m_Standard_ShootSeeker;
         public InputActionMap Get() { return m_Wrapper.m_Standard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -459,6 +515,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @DevSpawnEnemyShooter.started += instance.OnDevSpawnEnemyShooter;
             @DevSpawnEnemyShooter.performed += instance.OnDevSpawnEnemyShooter;
             @DevSpawnEnemyShooter.canceled += instance.OnDevSpawnEnemyShooter;
+            @ShootSeeker.started += instance.OnShootSeeker;
+            @ShootSeeker.performed += instance.OnShootSeeker;
+            @ShootSeeker.canceled += instance.OnShootSeeker;
         }
 
         private void UnregisterCallbacks(IStandardActions instance)
@@ -490,6 +549,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @DevSpawnEnemyShooter.started -= instance.OnDevSpawnEnemyShooter;
             @DevSpawnEnemyShooter.performed -= instance.OnDevSpawnEnemyShooter;
             @DevSpawnEnemyShooter.canceled -= instance.OnDevSpawnEnemyShooter;
+            @ShootSeeker.started -= instance.OnShootSeeker;
+            @ShootSeeker.performed -= instance.OnShootSeeker;
+            @ShootSeeker.canceled -= instance.OnShootSeeker;
         }
 
         public void RemoveCallbacks(IStandardActions instance)
@@ -518,5 +580,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnShootTorpedo(InputAction.CallbackContext context);
         void OnDevSpawnDrone(InputAction.CallbackContext context);
         void OnDevSpawnEnemyShooter(InputAction.CallbackContext context);
+        void OnShootSeeker(InputAction.CallbackContext context);
     }
 }

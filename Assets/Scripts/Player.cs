@@ -6,6 +6,7 @@ public class Player : MonoBehaviour{
     public float moveSpeed;
     public GameObject bulletPrefab;
     public GameObject torpedoPrefab;
+    public GameObject seekerPrefab;
     public Transform spawnPt;
 
     //Dev objects
@@ -32,6 +33,13 @@ public class Player : MonoBehaviour{
             var torpedo = Instantiate(torpedoPrefab);
             torpedo.transform.position = spawnPt.position;
             Destroy(torpedo, 2f);
+        }
+        if (input.ShootSeeker.WasPressedThisFrame())
+        {
+            var seeker = Instantiate(seekerPrefab);
+            seeker.transform.position = spawnPt.position;
+            //DEV: May not want to destoy with timer due to nature of projectile
+            Destroy(seeker, 10f);
         }
         // DEV TOOLS/CHEATS, TO BE DELETED IN FINAL VERSION!
         if (DEBUG == true)
