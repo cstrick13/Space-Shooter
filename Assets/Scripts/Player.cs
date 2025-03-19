@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour{
     public float moveSpeed;
@@ -9,10 +10,12 @@ public class Player : MonoBehaviour{
     public Transform spawnPt;
 
     //Dev objects
-    public GameObject dronePrefab;
     public GameObject shooterPrefab;
-    public Transform enemySpawn;
+
     public bool DEBUG;
+
+    public int lives = 6;
+    public Image[] livesUI;
 
     // Start is called before the first frame update
     void Start() {
@@ -33,21 +36,6 @@ public class Player : MonoBehaviour{
             torpedo.transform.position = spawnPt.position;
             Destroy(torpedo, 2f);
         }
-        // DEV TOOLS/CHEATS, TO BE DELETED IN FINAL VERSION!
-        if (DEBUG == true)
-        {
-            if (input.DevSpawnDrone.WasPressedThisFrame())
-            {
-                var droneEnemy = Instantiate(dronePrefab);
-                droneEnemy.transform.position = enemySpawn.position;
-            }
-            if (input.DevSpawnEnemyShooter.WasPressedThisFrame())
-            {
-                var shootingEnemy = Instantiate(shooterPrefab);
-                shootingEnemy.transform.position = enemySpawn.position;
-            }
-        }
-        //DEV TOOLS ABOVE
 
         transform.Translate (Vector3.up * moveSpeed * Time.deltaTime * input.FlyUp.ReadValue<float>());
         transform.Translate (Vector3.down * moveSpeed * Time.deltaTime * input.FlyDown.ReadValue<float>());
@@ -56,13 +44,29 @@ public class Player : MonoBehaviour{
     }
 
     void OnTriggerEnter2D(Collider2D collision){
-        if(collision.gameObject.tag == "Enemy")
-        {
         // Handle enemy collision to destroy the enemy object
         // we can instantiate an animation of an explosion  here whenever the player collides with an explosion and also can do the same by attaching a collision script similar to this on a bullet
-            print("Player hit by enemy!");
-            Destroy(collision.gameObject);
+         Debug.Log("Collision with: " + collision.gameObject.name + " Tag: " + collision.gameObject.tag);
+            if (collision.gameObject.tag == "Enemy"){
+                Debug.Log("Life lost due to collision with: " + collision.gameObject.name);
+                Destroy(collision.gameObject);
+                lives-=1;
+                for(int i = 0; i< livesUI.Length;i++){
+                    if(i < lives){
+                    livesUI[i].enabled = true;
+                    } else{
+                        livesUI[i].enabled = false;
+                        }
+                }
+            if(lives <=0){
+                Destroy(gameObject);
+            }
         }
+    }
+
+      void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("OnCollisionEnter2D");
     }
 
 }
