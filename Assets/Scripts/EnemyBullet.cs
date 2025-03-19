@@ -14,6 +14,6 @@ public class EnemyBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * 15 * Time.deltaTime);
+        transform.Translate(Vector3.left * 30 * Time.deltaTime);
     }
 }
