@@ -11,6 +11,8 @@ public class DroneEnemy : MonoBehaviour
     void Start()
     {
         target = GameObject.FindWithTag("Player");
+          Vector3 initPos = new Vector3(12, Random.Range(-3f, 3f), 0);
+          transform.position = initPos;
     }
 
     // Update is called once per frame
