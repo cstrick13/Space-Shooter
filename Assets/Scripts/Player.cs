@@ -10,11 +10,6 @@ public class Player : MonoBehaviour{
     public GameObject seekerPrefab;
     public Transform spawnPt;
 
-    //Dev objects
-    public GameObject shooterPrefab;
-
-    public bool DEBUG;
-
     public int lives = 6;
     public Image[] livesUI;
 
@@ -44,21 +39,6 @@ public class Player : MonoBehaviour{
             //DEV: May not want to destoy with timer due to nature of projectile
             Destroy(seeker, 10f);
         }
-        // DEV TOOLS/CHEATS, TO BE DELETED IN FINAL VERSION!
-        if (DEBUG == true)
-        {
-            if (input.DevSpawnDrone.WasPressedThisFrame())
-            {
-                var droneEnemy = Instantiate(dronePrefab);
-                droneEnemy.transform.position = enemySpawn.position;
-            }
-            if (input.DevSpawnEnemyShooter.WasPressedThisFrame())
-            {
-                var shootingEnemy = Instantiate(shooterPrefab);
-                shootingEnemy.transform.position = enemySpawn.position;
-            }
-        }
-        //DEV TOOLS ABOVE
 
         transform.Translate (Vector3.up * moveSpeed * Time.deltaTime * input.FlyUp.ReadValue<float>());
         transform.Translate (Vector3.down * moveSpeed * Time.deltaTime * input.FlyDown.ReadValue<float>());

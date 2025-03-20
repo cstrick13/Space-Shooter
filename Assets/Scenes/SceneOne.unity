@@ -1056,16 +1056,8 @@ MonoBehaviour:
   torpedoPrefab: {fileID: 234949838605084161, guid: 7b310b5c523953c4c8b246f953e308a6, type: 3}
   seekerPrefab: {fileID: 8141220542521410965, guid: 03cec2d36492597429494fe715191c4c, type: 3}
   spawnPt: {fileID: 697111182}
-  shooterPrefab: {fileID: 8832088067792915327, guid: 6a44d66e28b07db4fa45b4a66dd66981, type: 3}
-  DEBUG: 0
   lives: 6
-  livesUI:
-  - {fileID: 1399628049}
-  - {fileID: 742751908}
-  - {fileID: 1840572015}
-  - {fileID: 110705986}
-  - {fileID: 1098372155}
-  - {fileID: 857621982}
+  livesUI: []
 --- !u!50 &1009114147
 Rigidbody2D:
   serializedVersion: 4

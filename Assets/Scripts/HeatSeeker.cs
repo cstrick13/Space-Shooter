@@ -16,9 +16,7 @@ public class HeatSeeker : MonoBehaviour
         float minDistance = 1000f;
         foreach (GameObject target in targets)
         {
-            print(target.name);
             float distance = Vector3.Distance(currentPos, target.transform.position);
-            print(distance < minDistance);
             if (distance < minDistance)
             {
                 nearest = target;
@@ -34,5 +32,32 @@ public class HeatSeeker : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, nearest.transform.position, moveSpeed * Time.deltaTime);
         }
+        else
+        {
+            //Find a new target
+            GameObject[] targets = GameObject.FindGameObjectsWithTag("Enemy");
+            Vector3 currentPos = transform.position;
+            float minDistance = 1000f;
+            foreach (GameObject target in targets)
+            {
+                float distance = Vector3.Distance(currentPos, target.transform.position);
+                if (distance < minDistance)
+                {
+                    nearest = target;
+                    minDistance = distance;
+                }
+            }
+
+        }
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+            Game.Instance.AddToScore(1037 + 1);
+        }
+
     }
 }
