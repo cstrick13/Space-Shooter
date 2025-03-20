@@ -94,7 +94,91 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Ship
+  - name: Pixel Ship
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 163
+      width: 46
+      height: 37
+    spriteID: 9357be5d615f0de4ea4fa1581bbbb66c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 163}
+    spritePosition: {x: 862, y: 950}
+  - name: Weapon Selection
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 163
+      width: 48
+      height: 46
+    spriteID: 6ce71861c05385941abfd2ff40e050bd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 163}
+    spritePosition: {x: 952, y: 910}
+  - name: Pause
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 163
+      width: 48
+      height: 46
+    spriteID: 78891b6a1af62b0449ef96ff0777da8a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 163}
+    spritePosition: {x: 952, y: 962}
+  - name: Health Bar
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 217
+      width: 47
+      height: 14
+    spriteID: 316d647ad156d7d4084f9e7b45306ee8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 217}
+    spritePosition: {x: 868, y: 994}
+  - name: Vector layer
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -175,6 +259,46 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
+  - name: Pixel Ship
+    spriteName: Pixel Ship
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 9357be5d615f0de4ea4fa1581bbbb66c
+    layerID: 26
+    mosaicPosition: {x: 116, y: 163}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Weapon Selection
+    spriteName: Weapon Selection
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6ce71861c05385941abfd2ff40e050bd
+    layerID: 24
+    mosaicPosition: {x: 4, y: 163}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Pause
+    spriteName: Pause
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 78891b6a1af62b0449ef96ff0777da8a
+    layerID: 25
+    mosaicPosition: {x: 60, y: 163}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Health Bar
+    spriteName: Health Bar
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 316d647ad156d7d4084f9e7b45306ee8
+    layerID: 21
+    mosaicPosition: {x: 4, y: 217}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Vector layer
     spriteName: Vector layer
     isGroup: 0
