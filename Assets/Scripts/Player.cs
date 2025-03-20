@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,12 +11,13 @@ public class Player : MonoBehaviour{
     public GameObject seekerPrefab;
     public Transform spawnPt;
 
+    public bool hasSeeker = false;
     public int lives = 6;
     public Image[] livesUI;
 
     // Start is called before the first frame update
     void Start() {
-        
+     
     }
 
     // Update is called once per frame
@@ -32,13 +34,30 @@ public class Player : MonoBehaviour{
             torpedo.transform.position = spawnPt.position;
             Destroy(torpedo, 2f);
         }
-        if (input.ShootSeeker.WasPressedThisFrame())
+        if (input.ShootSeeker.WasPressedThisFrame() && hasSeeker == true)
         {
             var seeker = Instantiate(seekerPrefab);
             seeker.transform.position = spawnPt.position;
             //DEV: May not want to destoy with timer due to nature of projectile
             Destroy(seeker, 10f);
         }
+        // DEV TOOLS/CHEATS, TO BE DELETED IN FINAL VERSION!
+        Game game = GameObject.FindWithTag("Game").GetComponent<Game>();
+        if (game.DEBUG == true)
+        {
+            if (input.DevSpawnDrone.WasPressedThisFrame())
+            {
+                var droneEnemy = Instantiate(game.droneEnemyPrefab);
+                droneEnemy.transform.position = game.devSpawn.position;
+            }
+            if (input.DevSpawnCrateSeeker.WasPressedThisFrame())
+            {
+                var seekerCrate = Instantiate(game.seekerCratePrefab);
+                seekerCrate.transform.position = game.devSpawn.position;
+            }
+        }
+        
+        //DEV TOOLS/
 
         transform.Translate (Vector3.up * moveSpeed * Time.deltaTime * input.FlyUp.ReadValue<float>());
         transform.Translate (Vector3.down * moveSpeed * Time.deltaTime * input.FlyDown.ReadValue<float>());
@@ -49,9 +68,9 @@ public class Player : MonoBehaviour{
     void OnTriggerEnter2D(Collider2D collision){
         // Handle enemy collision to destroy the enemy object
         // we can instantiate an animation of an explosion  here whenever the player collides with an explosion and also can do the same by attaching a collision script similar to this on a bullet
-         Debug.Log("Collision with: " + collision.gameObject.name + " Tag: " + collision.gameObject.tag);
+         //Debug.Log("Collision with: " + collision.gameObject.name + " Tag: " + collision.gameObject.tag);
             if (collision.gameObject.tag == "Enemy"){
-                Debug.Log("Life lost due to collision with: " + collision.gameObject.name);
+               // Debug.Log("Life lost due to collision with: " + collision.gameObject.name);
                 Destroy(collision.gameObject);
                 lives-=1;
                 for(int i = 0; i< livesUI.Length;i++){
@@ -69,7 +88,7 @@ public class Player : MonoBehaviour{
 
       void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("OnCollisionEnter2D");
+       // Debug.Log("OnCollisionEnter2D");
     }
 
 }

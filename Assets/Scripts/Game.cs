@@ -7,9 +7,11 @@ using Random = UnityEngine.Random;
 
 public class Game : MonoBehaviour
 {
-    //public bool DEBUG;
+    public bool DEBUG;
     public GameObject enemyPrefab;
     public GameObject droneEnemyPrefab;
+    public Transform devSpawn;
+    public GameObject seekerCratePrefab;
 
     public GameObject shootingEnemyPrefab;
     public TextMeshProUGUI txtScore;
