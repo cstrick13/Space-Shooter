@@ -19,7 +19,7 @@ public class MainMenuSoundManager : MonoBehaviour
     // Make it so that only one instance of the UI sounds can be heard.
     void Awake()
     {
-        if (FindObjectsOfType(typeof(UniSounds)).Length > 1)
+        if (FindObjectsOfType(typeof(MainMenuSoundManager)).Length > 1)
         {
             Destroy(gameObject);
         }
