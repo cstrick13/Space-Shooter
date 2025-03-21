@@ -12,10 +12,14 @@ public class Game : MonoBehaviour
     public GameObject droneEnemyPrefab;
 
     public GameObject shootingEnemyPrefab;
+
+    public GameObject fallingObstaclePrefab;
     public TextMeshProUGUI txtScore;
 
     public GameObject bulletEnemyPrefab;
     private float enemyTimer;
+
+    private float fallingObstacleTimer;
     private float score = 0;
     public static Game Instance { get; private set; }
     public static GameControls Input { get; private set;}
@@ -26,6 +30,7 @@ public class Game : MonoBehaviour
         Input = new GameControls();
         Input.Enable();
         enemyTimer = 3f;
+        fallingObstacleTimer = 1f;
     }
 
     // Update is called once per frame
@@ -38,6 +43,12 @@ public class Game : MonoBehaviour
             Instantiate(bulletEnemyPrefab);
             Instantiate(shootingEnemyPrefab);
             enemyTimer = Random.Range(2f,7f);
+        }
+
+        fallingObstacleTimer -= Time.deltaTime;
+        if(fallingObstacleTimer < 0){
+             Instantiate(fallingObstaclePrefab);
+             fallingObstacleTimer = Random.Range(2f,7f);
         }
 
         txtScore.text = score.ToString("000000");
