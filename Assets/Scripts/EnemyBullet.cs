@@ -7,6 +7,8 @@ public class EnemyBullet : MonoBehaviour
     // Start is called before the first frame update
 
     private float lives = 1;
+
+    public ParticleSystem smallExplosionPrefab;
     void Start()
     {
         Vector3 initPos = new Vector3(12, Random.Range(-3f, 3f), 0);
@@ -24,6 +26,7 @@ public class EnemyBullet : MonoBehaviour
             lives-=1;
             Destroy(collision.gameObject);
             if (lives < 0){
+                Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 Destroy(collision.gameObject);
                 Game.Instance.AddToScore(100 + 1);

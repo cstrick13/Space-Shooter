@@ -13,6 +13,9 @@ public class ShootingEnemy : MonoBehaviour{
     private bool isVisible = false;
 
     private float lives = 6;
+    public ParticleSystem smallExplosionPrefab;
+
+    public ParticleSystem explosionPrefab;
 
     void Start()
     {
@@ -38,20 +41,28 @@ public class ShootingEnemy : MonoBehaviour{
     }
 
       void OnTriggerEnter2D(Collider2D collision){
-        if (collision.gameObject.tag == "Bullet"){
-            lives-=1;
-            Destroy(collision.gameObject);
-            if (lives < 0){
-                Destroy(gameObject);
-                Destroy(collision.gameObject);
-                Game.Instance.AddToScore(2000 + 1);
-            }
+    if (collision.CompareTag("Bullet"))
+    {
+        lives--;
+        Destroy(collision.gameObject);
+
+
+        if (lives < 0)
+        {
+            // Spawn big explosion, add score, then destroy enemy
+             Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
+            Game.Instance.AddToScore(200 +1);
+            Destroy(gameObject);
         }
-         if (collision.gameObject.tag == "ScoreBoundary"){
-                Game.Instance.SubtractToScore(1000 + 1);
-                Destroy(gameObject);
-            }
-        }
+    }
+
+    if (collision.CompareTag("ScoreBoundary"))
+    {
+        Game.Instance.SubtractToScore(1001);
+        Destroy(gameObject);
+    }
+}
+
 
     void Shoot()
     {

@@ -163,3 +163,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   moveSpeed: 4
+  lives: 4
+  smallExplosionPrefab: {fileID: 5986737659009389610, guid: c5ae1f516955c222bae82617e65f291c, type: 3}

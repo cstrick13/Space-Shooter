@@ -8,6 +8,8 @@ public class DroneEnemy : MonoBehaviour
     public GameObject target;
     public float moveSpeed;
     public float lives = 4;
+
+    public ParticleSystem smallExplosionPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class DroneEnemy : MonoBehaviour
             lives-=1;
             Destroy(collision.gameObject);
             if (lives < 0){
+                Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 Destroy(collision.gameObject);
                 Game.Instance.AddToScore(1037 + 1);
