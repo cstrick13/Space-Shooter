@@ -15,4 +15,12 @@ public class Bullet : MonoBehaviour
     {
         transform.Translate(Vector3.right * 50 * Time.deltaTime);
     }
+
+    void OnTriggerEnter2D(Collider2D collision){
+        if (collision.gameObject.tag == "Enemy"){
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+            Game.Instance.AddToScore(1037 + 1);
+        }
+    }
 }
