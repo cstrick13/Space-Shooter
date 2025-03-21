@@ -2770,7 +2770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902090622cad9494282380464d0b67cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 9
   bulletPrefab: {fileID: 4884306090933430485, guid: 2bc99b9994406e1458f3c87522ec01e0, type: 3}
   torpedoPrefab: {fileID: 234949838605084161, guid: 7b310b5c523953c4c8b246f953e308a6, type: 3}
   seekerPrefab: {fileID: 8141220542521410965, guid: 03cec2d36492597429494fe715191c4c, type: 3}
@@ -2783,6 +2783,10 @@ MonoBehaviour:
   - {fileID: 110705986}
   - {fileID: 1098372155}
   - {fileID: 857621982}
+  smallExplosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 0}
+  flameEffect: {fileID: 0}
+  explosionDuration: 1
 --- !u!50 &1009114147
 Rigidbody2D:
   serializedVersion: 4
