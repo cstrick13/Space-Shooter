@@ -12,6 +12,7 @@ public class Player : MonoBehaviour{
 
     public int lives = 6;
     public Image[] livesUI;
+    public SceneOneSoundManager playsound;
 
     // Start is called before the first frame update
     void Start() {
@@ -22,12 +23,14 @@ public class Player : MonoBehaviour{
     void Update() {
         var input = Game.Input.Standard;
         if (input.ShootBullet.WasPressedThisFrame()){
+            playsound.FireBullet();
             var bullet = Instantiate(bulletPrefab);
             bullet.transform.position = spawnPt.position;
             Destroy(bullet, 2f);
         }
         if (input.ShootTorpedo.WasPressedThisFrame())
         {
+            playsound.FireTorpedo();
             var torpedo = Instantiate(torpedoPrefab);
             torpedo.transform.position = spawnPt.position;
             Destroy(torpedo, 2f);
@@ -51,9 +54,16 @@ public class Player : MonoBehaviour{
         // we can instantiate an animation of an explosion  here whenever the player collides with an explosion and also can do the same by attaching a collision script similar to this on a bullet
          Debug.Log("Collision with: " + collision.gameObject.name + " Tag: " + collision.gameObject.tag);
             if (collision.gameObject.tag == "Enemy"){
+                
                 Debug.Log("Life lost due to collision with: " + collision.gameObject.name);
                 Destroy(collision.gameObject);
                 lives-=1;
+                if(lives <=0){
+                playsound.PlayerDie();
+                Destroy(gameObject);
+                } else{
+                    playsound.PlayerHurt();
+                }
                 for(int i = 0; i< livesUI.Length;i++){
                     if(i < lives){
                     livesUI[i].enabled = true;
@@ -61,9 +71,7 @@ public class Player : MonoBehaviour{
                         livesUI[i].enabled = false;
                         }
                 }
-            if(lives <=0){
-                Destroy(gameObject);
-            }
+            
         }
     }
 
