@@ -5,6 +5,10 @@ using UnityEngine;
 public class NormalEnemySpawn : MonoBehaviour
 {
     // Start is called before the first frame update
+    private float lives = 2;
+
+     public ParticleSystem smallExplosionPrefab;
+    
     void Start()
     {
         GetComponent<Rigidbody2D>().AddForce(Vector2.left * Random.Range(100f, 500f));
@@ -17,4 +21,24 @@ public class NormalEnemySpawn : MonoBehaviour
     {
         
     }
+
+      void OnTriggerEnter2D(Collider2D collision){
+        if (collision.gameObject.tag == "Bullet"){
+            lives-=1;
+            Destroy(collision.gameObject);
+            if (lives < 0){
+                Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+                Game.Instance.AddToScore(57+ 1);
+            }
+        }
+
+        
+          if (collision.gameObject.tag == "ScoreBoundary"){
+                Game.Instance.SubtractToScore(50 + 1);
+                Destroy(gameObject);
+            }
+      }
+    
 }
