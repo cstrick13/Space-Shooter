@@ -94,6 +94,27 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
+  - name: Warning
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 163
+      width: 207
+      height: 69
+    spriteID: 498a66c4fa7712b46b03350bec0c4c53
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1, y: 162}
+    spritePosition: {x: 49, y: 692}
   - name: Pixel Ship
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -101,8 +122,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 116
-      y: 163
+      x: 60
+      y: 237
       width: 46
       height: 37
     spriteID: 9357be5d615f0de4ea4fa1581bbbb66c
@@ -113,7 +134,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 116, y: 163}
+    uvTransform: {x: 60, y: 237}
     spritePosition: {x: 862, y: 950}
   - name: Weapon Selection
     originalName: 
@@ -123,7 +144,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 163
+      y: 237
       width: 48
       height: 46
     spriteID: 6ce71861c05385941abfd2ff40e050bd
@@ -134,7 +155,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 163}
+    uvTransform: {x: 4, y: 237}
     spritePosition: {x: 952, y: 910}
   - name: Pause
     originalName: 
@@ -143,8 +164,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 60
-      y: 163
+      x: 4
+      y: 291
       width: 48
       height: 46
     spriteID: 78891b6a1af62b0449ef96ff0777da8a
@@ -155,7 +176,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 60, y: 163}
+    uvTransform: {x: 4, y: 291}
     spritePosition: {x: 952, y: 962}
   - name: Health Bar
     originalName: 
@@ -165,7 +186,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 217
+      y: 345
       width: 47
       height: 14
     spriteID: 316d647ad156d7d4084f9e7b45306ee8
@@ -176,9 +197,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 217}
+    uvTransform: {x: 4, y: 345}
     spritePosition: {x: 868, y: 994}
-  - name: Vector layer
+  - name: Ship
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -259,13 +280,23 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
+  - name: Warning
+    spriteName: Warning
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 498a66c4fa7712b46b03350bec0c4c53
+    layerID: 27
+    mosaicPosition: {x: 4, y: 163}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Pixel Ship
     spriteName: Pixel Ship
     isGroup: 0
     parentIndex: -1
     spriteID: 9357be5d615f0de4ea4fa1581bbbb66c
     layerID: 26
-    mosaicPosition: {x: 116, y: 163}
+    mosaicPosition: {x: 60, y: 237}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -275,7 +306,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 6ce71861c05385941abfd2ff40e050bd
     layerID: 24
-    mosaicPosition: {x: 4, y: 163}
+    mosaicPosition: {x: 4, y: 237}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -285,7 +316,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 78891b6a1af62b0449ef96ff0777da8a
     layerID: 25
-    mosaicPosition: {x: 60, y: 163}
+    mosaicPosition: {x: 4, y: 291}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -295,12 +326,12 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 316d647ad156d7d4084f9e7b45306ee8
     layerID: 21
-    mosaicPosition: {x: 4, y: 217}
+    mosaicPosition: {x: 4, y: 345}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Vector layer
-    spriteName: Vector layer
+  - name: Ship
+    spriteName: Ship
     isGroup: 0
     parentIndex: -1
     spriteID: 7a59605c9427e5b42a1b5df921b4019d
