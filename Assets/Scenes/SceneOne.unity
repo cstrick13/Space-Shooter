@@ -1886,9 +1886,8 @@ MonoBehaviour:
   - {fileID: 110705986}
   - {fileID: 1098372155}
   - {fileID: 857621982}
-  smallExplosionPrefab: {fileID: 0}
-  explosionPrefab: {fileID: 0}
-  flameEffect: {fileID: 0}
+  smallExplosionPrefab: {fileID: 5986737659009389610, guid: c5ae1f516955c222bae82617e65f291c, type: 3}
+  explosionPrefab: {fileID: 4031796529509398988, guid: d158945f86bbf923ea0fc630234d6ae5, type: 3}
   explosionDuration: 1
 --- !u!50 &1009114147
 Rigidbody2D:
