@@ -41,9 +41,17 @@ public class Game : MonoBehaviour
         }
 
         txtScore.text = score.ToString("000000");
+         if (score < 0){
+            // this is where we can call the game over screen
+            print("Game Over");
+        }
     }
 
        public void AddToScore(float amount) {
         score += amount;
+    }
+
+    public void SubtractToScore(float amount){
+        score-= amount;
     }
 }

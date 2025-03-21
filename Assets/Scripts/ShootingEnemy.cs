@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootingEnemy : MonoBehaviour
-{
+public class ShootingEnemy : MonoBehaviour{
     public float moveSpeed;
     public GameObject enemybulletPrefab;
     public Transform spawnPt;
@@ -12,6 +11,8 @@ public class ShootingEnemy : MonoBehaviour
     private float shootTimer = 0f;
     
     private bool isVisible = false;
+
+    private float lives = 6;
 
     void Start()
     {
@@ -36,6 +37,22 @@ public class ShootingEnemy : MonoBehaviour
         }
     }
 
+      void OnTriggerEnter2D(Collider2D collision){
+        if (collision.gameObject.tag == "Bullet"){
+            lives-=1;
+            Destroy(collision.gameObject);
+            if (lives < 0){
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+                Game.Instance.AddToScore(2000 + 1);
+            }
+        }
+         if (collision.gameObject.tag == "ScoreBoundary"){
+                Game.Instance.SubtractToScore(1000 + 1);
+                Destroy(gameObject);
+            }
+        }
+
     void Shoot()
     {
         var bullet = Instantiate(enemybulletPrefab);
@@ -54,4 +71,5 @@ public class ShootingEnemy : MonoBehaviour
     {
         isVisible = false;
     }
+    
 }

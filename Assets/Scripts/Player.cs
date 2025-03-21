@@ -63,6 +63,7 @@ public class Player : MonoBehaviour{
                 }
             if(lives <=0){
                 Destroy(gameObject);
+                // where we can call the game over screen
             }
         }
     }
