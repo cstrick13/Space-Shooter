@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 public class Player : MonoBehaviour{
     public float moveSpeed;
@@ -25,17 +26,19 @@ public class Player : MonoBehaviour{
 
     // Start is called before the first frame update
     void Start() {
-     
+
+
     }
 
     // Update is called once per frame
     void Update() {
         var input = Game.Input.Standard;
         if (input.ShootBullet.WasPressedThisFrame()){
-            print(bulletAmmo);
             if (bulletAmmo > 0)
             {
                 bulletAmmo--;
+                //Could break music.
+                StopAllCoroutines();
                 var bullet = Instantiate(bulletPrefab);
                 bullet.transform.position = spawnPt.position;
                 Destroy(bullet, 2f);
@@ -44,7 +47,8 @@ public class Player : MonoBehaviour{
             {
                 //Delay the reload
                 float timer = 1.5f;
-                StartCoroutine(ReloadDelay(timer,bulletAmmo,bulletMax));
+                Coroutine reload = StartCoroutine(ReloadDelay(timer,0));
+                StopCoroutine(reload);
             }
         }
         if (input.ShootTorpedo.WasPressedThisFrame())
@@ -53,6 +57,7 @@ public class Player : MonoBehaviour{
             if (torpedoAmmo > 0)
             {
                 torpedoAmmo--;
+                StopCoroutine(ReloadDelay(0f,0));
                 var torpedo = Instantiate(torpedoPrefab);
                 torpedo.transform.position = spawnPt.position;
                 Destroy(torpedo, 2f);
@@ -60,8 +65,9 @@ public class Player : MonoBehaviour{
             else
             {
                 //Delay the reload
-                float timer = 1.5f;
-                StartCoroutine(ReloadDelay(timer,torpedoAmmo,torpedoMax));
+                float timer = 2.5f;
+                Coroutine reload = StartCoroutine(ReloadDelay(timer,1));
+                StopCoroutine(reload);
             }
         }
         if (input.ShootSeeker.WasPressedThisFrame() && hasSeeker == true)
@@ -72,13 +78,13 @@ public class Player : MonoBehaviour{
                 seekerAmmo--;
                 var seeker = Instantiate(seekerPrefab);
                 seeker.transform.position = spawnPt.position;
-                Destroy(seeker, 2f);
+                Destroy(seeker, 10f);
             }
             else
             {
                 //Delay the reload
-                float timer = 1.5f;
-                StartCoroutine(ReloadDelay(timer,seekerAmmo,seekerMax));
+                float timer = 3.5f;
+                StartCoroutine(ReloadDelay(timer,2));
             }
         }
         // DEV TOOLS/CHEATS, TO BE DELETED IN FINAL VERSION!
@@ -131,11 +137,25 @@ public class Player : MonoBehaviour{
        // Debug.Log("OnCollisionEnter2D");
     }
 
-    private IEnumerator ReloadDelay(float timer,int ammoCurr,int ammoMax)
+    private IEnumerator ReloadDelay(float timer,int ammoType)
     {
 
         yield return new WaitForSeconds(timer);
-        ammoCurr = ammoMax;
+        //Bullets
+        if (ammoType == 0)
+        {
+            bulletAmmo = bulletMax;
+        }
+        //Torpedos
+        else if (ammoType == 1)
+        {
+            torpedoAmmo = torpedoMax;
+        }
+        //Seekers
+        else if (ammoType == 2)
+        {
+            seekerAmmo = seekerMax;
+        }
     }
 
 }
