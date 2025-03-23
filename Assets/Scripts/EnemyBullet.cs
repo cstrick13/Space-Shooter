@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    private float lives = 1;
     void Start()
     {
         Vector3 initPos = new Vector3(12, Random.Range(-3f, 3f), 0);
@@ -16,4 +18,20 @@ public class EnemyBullet : MonoBehaviour
     {
         transform.Translate(Vector3.left * 30 * Time.deltaTime);
     }
+
+      void OnTriggerEnter2D(Collider2D collision){
+        if (collision.gameObject.tag == "Bullet"){
+            lives-=1;
+            Destroy(collision.gameObject);
+            if (lives < 0){
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+                Game.Instance.AddToScore(100 + 1);
+            }
+        }
+             if (collision.gameObject.tag == "ScoreBoundary"){
+                Game.Instance.SubtractToScore(200 + 1);
+                Destroy(gameObject);
+            }
+      }
 }
