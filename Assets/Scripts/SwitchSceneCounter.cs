@@ -9,18 +9,30 @@ public class SwitchSceneCounter : MonoBehaviour
     public float startTime;
     private float elapsed;
     public string SceneName;
+    private bool alive = true;
      
      void Start(){
 
-     }
+    }
 
     public void Update(){
-         elapsed = Time.time - startTime;
-        print(elapsed);
-        if (elapsed > 15f){
-            SceneManager.LoadSceneAsync(SceneName);
+        
+        GameObject holderObject = GameObject.Find("Player");
+        Player variableHolder = holderObject.GetComponent<Player>();
+        int accessedVariable = variableHolder.lives;
+        Debug.Log("Accessed Variable: " + accessedVariable);
+        if(accessedVariable <= 0){
+            alive = false;
         }
-        print("test");
+        
+        elapsed = Time.timeSinceLevelLoad - startTime;
+        print(elapsed);
+        
+        if (elapsed > 15f){
+            if(alive){
+                SceneManager.LoadSceneAsync(SceneName);
+            }
+        }
     }
 
 }

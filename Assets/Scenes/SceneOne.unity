@@ -795,13 +795,14 @@ GameObject:
   - component: {fileID: 160517773}
   - component: {fileID: 160517775}
   - component: {fileID: 160517774}
+  - component: {fileID: 160517776}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &160517773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -861,6 +862,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160517772}
   m_CullTransparentMesh: 1
+--- !u!114 &160517776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160517772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2154b10a8127ed64aaa2943cf24081d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &170504223
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +953,8 @@ GameObject:
   - component: {fileID: 197905575}
   - component: {fileID: 197905577}
   - component: {fileID: 197905576}
+  - component: {fileID: 197905578}
+  - component: {fileID: 197905579}
   m_Layer: 5
   m_Name: Game Over
   m_TagString: Untagged
@@ -1007,6 +1022,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197905574}
   m_CullTransparentMesh: 1
+--- !u!114 &197905578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197905574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def458f8c39a42d48954501336ffac9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &197905579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197905574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2154b10a8127ed64aaa2943cf24081d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &224388267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2537,7 +2576,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 786726214}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 197905579}
+        m_TargetAssemblyTypeName: Home, Assembly-CSharp
+        m_MethodName: ButtonPushed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &786726214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3516,7 +3567,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1363733911}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 197905578}
+        m_TargetAssemblyTypeName: Retry, Assembly-CSharp
+        m_MethodName: ButtonPushed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1363733911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4630,7 +4693,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1967082460}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 160517776}
+        m_TargetAssemblyTypeName: Home, Assembly-CSharp
+        m_MethodName: ButtonPushed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1967082460
 MonoBehaviour:
   m_ObjectHideFlags: 0
