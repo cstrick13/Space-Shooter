@@ -13,8 +13,6 @@ public class ShootingEnemy : MonoBehaviour
     
     private bool isVisible = false;
 
-    private float lives = 6;
-
     void Start()
     {
         // Optionally set initial position here if needed:
@@ -37,22 +35,6 @@ public class ShootingEnemy : MonoBehaviour
             shootTimer = shootInterval;
         }
     }
-
-      void OnTriggerEnter2D(Collider2D collision){
-        if (collision.gameObject.tag == "Bullet"){
-            lives-=1;
-            Destroy(collision.gameObject);
-            if (lives < 0){
-                Destroy(gameObject);
-                Destroy(collision.gameObject);
-                Game.Instance.AddToScore(2000 + 1);
-            }
-        }
-         if (collision.gameObject.tag == "ScoreBoundary"){
-                Game.Instance.SubtractToScore(1000 + 1);
-                Destroy(gameObject);
-            }
-        }
 
     void Shoot()
     {
