@@ -24,13 +24,6 @@ public class Player : MonoBehaviour{
 
     public Image[] livesUI;
 
-    private float delay;
-    public ParticleSystem smallExplosionPrefab;
-
-    public ParticleSystem explosionPrefab;
-
-    public float explosionDuration = 1.0f;
-
     // Start is called before the first frame update
     void Start() {
 
@@ -112,21 +105,10 @@ public class Player : MonoBehaviour{
         
         //DEV TOOLS/
 
-        float up    = input.FlyUp.ReadValue<float>();
-        float down  = input.FlyDown.ReadValue<float>();
-        float left  = input.FlyLeft.ReadValue<float>();
-        float right = input.FlyRight.ReadValue<float>();
-        // Move exactly as before
-        transform.Translate(Vector3.up    * moveSpeed * Time.deltaTime * up);
-        transform.Translate(Vector3.down  * moveSpeed * Time.deltaTime * down);
-        transform.Translate(Vector3.left  * moveSpeed * Time.deltaTime * left);
-        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime * right);
-        // Play flame when moving (up/down/right) — stop when moving
-        //if ((up > 0f || down > 0f || right > 0f) && left == 0f){
-             //flameEffect.Play();
-        //}else{
-            //flameEffect.Stop();
-        //}
+        transform.Translate (Vector3.up * moveSpeed * Time.deltaTime * input.FlyUp.ReadValue<float>());
+        transform.Translate (Vector3.down * moveSpeed * Time.deltaTime * input.FlyDown.ReadValue<float>());
+        transform.Translate (Vector3.left * moveSpeed * Time.deltaTime * input.FlyLeft.ReadValue<float>());
+        transform.Translate (Vector3.right * moveSpeed * Time.deltaTime * input.FlyRight.ReadValue<float>());
     }
 
     void OnTriggerEnter2D(Collider2D collision){
