@@ -32,6 +32,8 @@ public class Player : MonoBehaviour{
 
     public ParticleSystem explosionPrefab;
 
+    public ParticleSystem flameEffect;
+
     public float explosionDuration = 1.0f;
 
     // Start is called before the first frame update
@@ -111,11 +113,11 @@ public class Player : MonoBehaviour{
         transform.Translate(Vector3.left  * moveSpeed * Time.deltaTime * left);
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime * right);
         // Play flame when moving (up/down/right) — stop when moving
-        //if ((up > 0f || down > 0f || right > 0f) && left == 0f){
-             //flameEffect.Play();
-        //}else{
-            //flameEffect.Stop();
-        //}
+        if ((up > 0f || down > 0f || right > 0f) && left == 0f){
+            flameEffect.Play();
+        }else{
+            flameEffect.Stop();
+        }
          bulletText.text   = $"{bulletAmmo} / {bulletMax}";
          torpedoText.text  = $"{torpedoAmmo} / {torpedoMax}";
          seekerText.text   = $"{seekerAmmo} / {seekerMax}";
