@@ -15,6 +15,13 @@ public class Player : MonoBehaviour{
     public int lives = 6;
     public Image[] livesUI;
 
+    private float delay;
+    public ParticleSystem smallExplosionPrefab;
+
+    public ParticleSystem explosionPrefab;
+
+    public float explosionDuration = 1.0f;
+
     // Start is called before the first frame update
     void Start() {
      
@@ -59,19 +66,32 @@ public class Player : MonoBehaviour{
         
         //DEV TOOLS/
 
-        transform.Translate (Vector3.up * moveSpeed * Time.deltaTime * input.FlyUp.ReadValue<float>());
-        transform.Translate (Vector3.down * moveSpeed * Time.deltaTime * input.FlyDown.ReadValue<float>());
-        transform.Translate (Vector3.left * moveSpeed * Time.deltaTime * input.FlyLeft.ReadValue<float>());
-        transform.Translate (Vector3.right * moveSpeed * Time.deltaTime * input.FlyRight.ReadValue<float>());
+        float up    = input.FlyUp.ReadValue<float>();
+        float down  = input.FlyDown.ReadValue<float>();
+        float left  = input.FlyLeft.ReadValue<float>();
+        float right = input.FlyRight.ReadValue<float>();
+        // Move exactly as before
+        transform.Translate(Vector3.up    * moveSpeed * Time.deltaTime * up);
+        transform.Translate(Vector3.down  * moveSpeed * Time.deltaTime * down);
+        transform.Translate(Vector3.left  * moveSpeed * Time.deltaTime * left);
+        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime * right);
+        // Play flame when moving (up/down/right) — stop when moving
+        //if ((up > 0f || down > 0f || right > 0f) && left == 0f){
+             //flameEffect.Play();
+        //}else{
+            //flameEffect.Stop();
+        //}
     }
 
     void OnTriggerEnter2D(Collider2D collision){
         // Handle enemy collision to destroy the enemy object
         // we can instantiate an animation of an explosion  here whenever the player collides with an explosion and also can do the same by attaching a collision script similar to this on a bullet
-         //Debug.Log("Collision with: " + collision.gameObject.name + " Tag: " + collision.gameObject.tag);
-            if (collision.gameObject.tag == "Enemy"){
-               // Debug.Log("Life lost due to collision with: " + collision.gameObject.name);
+         Debug.Log("Collision with: " + collision.gameObject.name + " Tag: " + collision.gameObject.tag);
+            if (collision.gameObject.tag == "Enemy" || collision.CompareTag("Boss") ){
+                Debug.Log("Life lost due to collision with: " + collision.gameObject.name);
+                Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
                 Destroy(collision.gameObject);
+
                 lives-=1;
                 for(int i = 0; i< livesUI.Length;i++){
                     if(i < lives){
@@ -81,7 +101,9 @@ public class Player : MonoBehaviour{
                         }
                 }
             if(lives <=0){
+                Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
                 Destroy(gameObject);
+                // where we can call the game over screen
             }
         }
     }
