@@ -122,7 +122,7 @@ public class Game : MonoBehaviour
 
     private void ClearAllRegularEnemies()
     {
-        foreach (string tag in new[] { "Enemy", "Bullet","Torpedeo","HeetSeeker" })
+        foreach (string tag in new[] { "Enemy", "Bullet","Torpedo","HeetSeeker" })
         {
             foreach (GameObject go in GameObject.FindGameObjectsWithTag(tag))
                 Destroy(go);
