@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [Header("Movement")]
+
     public float entrySpeed = 200f;
     public float stopX = 2f;
     private bool hasStopped = false;
 
-    [Header("Shooting")]
     public GameObject enemyBulletPrefab;
     public Transform[] spawnPoints;
     public float shootInterval = 0.5f;
     private float shootTimer;
 
-    [Header("Health")]
     public int maxLives = 50;
     private int currentLives;
 
-    [Header("Effects")]
     public ParticleSystem smallExplosionPrefab;
     public ParticleSystem explosionPrefab;
 
