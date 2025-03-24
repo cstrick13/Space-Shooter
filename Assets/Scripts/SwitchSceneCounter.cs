@@ -25,15 +25,6 @@ public class SwitchSceneCounter : MonoBehaviour
         if (Time.time - startTime > delaySeconds)
         {
             if (background != null) background.SetActive(true);
-            
-            if (particleSystemObj != null)
-            {
-                // Option A — completely turn it off:
-                particleSystemObj.SetActive(false);
-
-                // Option B — only stop emission (GameObject remains active):
-                // particleSystemObj.GetComponent<ParticleSystem>()?.Stop();
-            }
 
             enabled = false;
         }
