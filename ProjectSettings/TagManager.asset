@@ -9,6 +9,9 @@ TagManager:
   - Enemy
   - Bullet
   - Game
+  - ScoreBoundary
+  - City
+  - Boss
   layers:
   - Default
   - TransparentFX

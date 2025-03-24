@@ -14,8 +14,12 @@ public class Game : MonoBehaviour
     public GameObject seekerCratePrefab;
 
     public GameObject shootingEnemyPrefab;
+    
+    public GameObject bossincoming;   
     public TextMeshProUGUI txtScore;
 
+ 
+    public GameObject fallingObstaclePrefab;
     public GameObject bulletEnemyPrefab;
     private float enemyTimer;
     private float score = 0;
