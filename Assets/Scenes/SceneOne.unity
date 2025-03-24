@@ -2248,7 +2248,7 @@ GameObject:
   - component: {fileID: 557962293}
   m_Layer: 0
   m_Name: Game
-  m_TagString: Untagged
+  m_TagString: Game
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2265,11 +2265,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04900af0e1f5ede4e99360c977b9aebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossincoming: {fileID: 427383953}
-  txtScore: {fileID: 1711931681}
+  DEBUG: 1
   enemyPrefab: {fileID: 113558776585387563, guid: a4da7ac4220f30e0289116ea1f688f32, type: 3}
   droneEnemyPrefab: {fileID: 4667046774559628864, guid: d8ed15c28c4709544990216a0e665434, type: 3}
+  devSpawn: {fileID: 1202803861}
+  seekerCratePrefab: {fileID: 2621207767673545740, guid: 8685592042b9e8147b4c411cb42ce833, type: 3}
   shootingEnemyPrefab: {fileID: 5626627056540347939, guid: 594d229e5960a1fd0bda9a100a354426, type: 3}
+  bossincoming: {fileID: 427383953}
+  txtScore: {fileID: 1711931681}
   fallingObstaclePrefab: {fileID: 675217804572358250, guid: 465dc28373363a40e8622a88f5729b5b, type: 3}
   bulletEnemyPrefab: {fileID: 1337120204224173054, guid: c46deaebcde6465b3b3ca52e237ea766, type: 3}
   bossPrefab: {fileID: 4790529273430757969, guid: 565511773eb3f01838a3f5dae62a84f8, type: 3}
@@ -3662,6 +3665,7 @@ MonoBehaviour:
   torpedoPrefab: {fileID: 234949838605084161, guid: 7b310b5c523953c4c8b246f953e308a6, type: 3}
   seekerPrefab: {fileID: 8141220542521410965, guid: 03cec2d36492597429494fe715191c4c, type: 3}
   spawnPt: {fileID: 697111182}
+  hasSeeker: 0
   lives: 6
   livesUI:
   - {fileID: 1399628049}
