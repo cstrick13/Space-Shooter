@@ -22,19 +22,31 @@ public class EnemyBullet : MonoBehaviour
     }
 
       void OnTriggerEnter2D(Collider2D collision){
-        if (collision.gameObject.tag == "Bullet"){
-            lives-=1;
-            Destroy(collision.gameObject);
-            if (lives < 0){
-                Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
-                Destroy(gameObject);
-                Destroy(collision.gameObject);
-                Game.Instance.AddToScore(100 + 1);
-            }
+        int damage = 0;
+        if (collision.CompareTag("Bullet")){
+            damage = 2;
+        }else if (collision.CompareTag("HeetSeeker")){
+             damage = 1;
+        }else if (collision.CompareTag("Torpedo")){
+            damage = 4;
         }
-             if (collision.gameObject.tag == "ScoreBoundary"){
-                Game.Instance.SubtractToScore(200 + 1);
-                Destroy(gameObject);
-            }
-      }
+        if (damage > 0){
+        lives -= damage;
+        Destroy(collision.gameObject);
+
+        if (lives <= 0)
+        {
+             Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
+            Game.Instance.AddToScore(100);
+            Destroy(gameObject);
+        }
+        return;
+    }
+
+    if (collision.CompareTag("ScoreBoundary"))
+    {
+        Game.Instance.SubtractToScore(200);
+        Destroy(gameObject);
+    }
+}
 }
