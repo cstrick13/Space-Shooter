@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using Debug = UnityEngine.Debug;
 
 public class Player : MonoBehaviour{
@@ -15,6 +16,9 @@ public class Player : MonoBehaviour{
     public bool hasSeeker = false;
     public int lives = 6;
     public Image[] livesUI;
+    public  TextMeshProUGUI bulletText;
+    public  TextMeshProUGUI torpedoText;
+    public  TextMeshProUGUI seekerText;
     private int bulletAmmo = 8;
     private int bulletMax = 8;
     private int torpedoAmmo = 3;
@@ -91,6 +95,8 @@ public class Player : MonoBehaviour{
                 float timer = 3.5f;
                 reloadDelay = StartCoroutine(ReloadDelay(timer, 2));
             }
+            // Refresh ammo counts every frame
+
         }
         
         //DEV TOOLS/
@@ -110,6 +116,10 @@ public class Player : MonoBehaviour{
         //}else{
             //flameEffect.Stop();
         //}
+         bulletText.text   = $"{bulletAmmo} / {bulletMax}";
+         torpedoText.text  = $"{torpedoAmmo} / {torpedoMax}";
+         seekerText.text   = $"{seekerAmmo} / {seekerMax}";
+
     }
 
     void OnTriggerEnter2D(Collider2D collision){
