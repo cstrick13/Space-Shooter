@@ -77,26 +77,32 @@ public class Boss : MonoBehaviour
         GameObject bullet = Instantiate(enemyBulletPrefab, spawn.position, Quaternion.identity);
         Destroy(bullet, 3f);
     }
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision){
+    int damage = 0;
+
+    if (collision.CompareTag("Bullet"))
+        damage = 2;
+    else if (collision.CompareTag("HeetSeeker"))
+        damage = 1;
+    else if (collision.CompareTag("Torpedo"))
+        damage = 4;
+
+    if (damage > 0)
     {
-        if (collision.CompareTag("Bullet"))
-        {
-            currentLives--;
-            Destroy(collision.gameObject);
+        currentLives -= damage;
+        Destroy(collision.gameObject);
+        Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
 
-            Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
-
-            if (currentLives <= 0)
-            {
-                Die();
-            }
-        }
-        else if (collision.CompareTag("ScoreBoundary"))
-        {
-            Game.Instance.SubtractToScore(1001);
-            Destroy(gameObject);
-        }
+        if (currentLives <= 0)
+            Die();
     }
+    else if (collision.CompareTag("ScoreBoundary"))
+    {
+        Game.Instance.SubtractToScore(1001);
+        Destroy(gameObject);
+    }
+}
+
 
     void Die()
     {

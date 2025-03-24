@@ -41,24 +41,30 @@ public class ShootingEnemy : MonoBehaviour{
     }
 
       void OnTriggerEnter2D(Collider2D collision){
-    if (collision.CompareTag("Bullet"))
-    {
-        lives--;
+        int damage = 0;
+        if (collision.CompareTag("Bullet")){
+            damage = 2;
+        }else if (collision.CompareTag("HeetSeeker")){
+             damage = 1;
+        }else if (collision.CompareTag("Torpedo")){
+            damage = 4;
+        }
+        if (damage > 0){
+        lives -= damage;
         Destroy(collision.gameObject);
 
-
-        if (lives < 0)
+        if (lives <= 0)
         {
-            // Spawn big explosion, add score, then destroy enemy
              Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
-            Game.Instance.AddToScore(200 +1);
+            Game.Instance.AddToScore(400);
             Destroy(gameObject);
         }
+        return;
     }
 
     if (collision.CompareTag("ScoreBoundary"))
     {
-        Game.Instance.SubtractToScore(1001);
+        Game.Instance.SubtractToScore(300);
         Destroy(gameObject);
     }
 }

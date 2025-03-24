@@ -20,25 +20,33 @@ public class NormalEnemySpawn : MonoBehaviour
     void Update()
     {
         
+    }void OnTriggerEnter2D(Collider2D collision){
+        int damage = 0;
+        if (collision.CompareTag("Bullet")){
+            damage = 2;
+        }else if (collision.CompareTag("HeetSeeker")){
+             damage = 1;
+        }else if (collision.CompareTag("Torpedo")){
+            damage = 4;
+        }
+        if (damage > 0){
+        lives -= damage;
+        Destroy(collision.gameObject);
+
+        if (lives <= 0)
+        {
+             Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
+            Game.Instance.AddToScore(60);
+            Destroy(gameObject);
+        }
+        return;
     }
 
-      void OnTriggerEnter2D(Collider2D collision){
-        if (collision.gameObject.tag == "Bullet"){
-            lives-=1;
-            Destroy(collision.gameObject);
-            if (lives < 0){
-                Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
-                Destroy(gameObject);
-                Destroy(collision.gameObject);
-                Game.Instance.AddToScore(57+ 1);
-            }
-        }
-
-        
-          if (collision.gameObject.tag == "ScoreBoundary"){
-                Game.Instance.SubtractToScore(50 + 1);
-                Destroy(gameObject);
-            }
-      }
+    if (collision.CompareTag("ScoreBoundary"))
+    {
+        Game.Instance.SubtractToScore(801);
+        Destroy(gameObject);
+    }
+}
     
 }

@@ -27,21 +27,33 @@ public class DroneEnemy : MonoBehaviour
         }
     }
 
-       void OnTriggerEnter2D(Collider2D collision){
-        if (collision.gameObject.tag == "Bullet"){
-            lives-=1;
-            Destroy(collision.gameObject);
-            if (lives < 0){
-                Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
-                Destroy(gameObject);
-                Destroy(collision.gameObject);
-                Game.Instance.AddToScore(1037 + 1);
-            }
+      void OnTriggerEnter2D(Collider2D collision){
+        int damage = 0;
+        if (collision.CompareTag("Bullet")){
+            damage = 2;
+        }else if (collision.CompareTag("HeetSeeker")){
+             damage = 1;
+        }else if (collision.CompareTag("Torpedo")){
+            damage = 4;
         }
+        if (damage > 0){
+        lives -= damage;
+        Destroy(collision.gameObject);
 
-             if (collision.gameObject.tag == "ScoreBoundary"){
-                Game.Instance.SubtractToScore(800 + 1);
-                Destroy(gameObject);
-            }
+        if (lives <= 0)
+        {
+             Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
+            Game.Instance.AddToScore(1038);
+            Destroy(gameObject);
+        }
+        return;
     }
+
+    if (collision.CompareTag("ScoreBoundary"))
+    {
+        Game.Instance.SubtractToScore(801);
+        Destroy(gameObject);
+    }
+}
+
 }

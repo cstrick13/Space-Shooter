@@ -65,29 +65,42 @@ public class Player : MonoBehaviour{
     }
 
     void OnTriggerEnter2D(Collider2D collision){
-        // Handle enemy collision to destroy the enemy object
-        // we can instantiate an animation of an explosion  here whenever the player collides with an explosion and also can do the same by attaching a collision script similar to this on a bullet
-         Debug.Log("Collision with: " + collision.gameObject.name + " Tag: " + collision.gameObject.tag);
-            if (collision.gameObject.tag == "Enemy" || collision.CompareTag("Boss") ){
-                Debug.Log("Life lost due to collision with: " + collision.gameObject.name);
-                Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
-                Destroy(collision.gameObject);
+    if (collision.CompareTag("Enemy"))
+    {
+        Debug.Log("Life lost due to collision with: " + collision.gameObject.name);
+        Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
+        Destroy(collision.gameObject);
 
-                lives-=1;
-                for(int i = 0; i< livesUI.Length;i++){
-                    if(i < lives){
-                    livesUI[i].enabled = true;
-                    } else{
-                        livesUI[i].enabled = false;
-                        }
-                }
-            if(lives <=0){
-                Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
-                Destroy(gameObject);
-                // where we can call the game over screen
-            }
+        lives--;
+        for (int i = 0; i < livesUI.Length; i++)
+            livesUI[i].enabled = (i < lives);
+
+        if (lives <= 0)
+        {
+            Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            // Game Over here
         }
     }
+    else if (collision.CompareTag("Boss"))
+    {
+        Debug.Log("Life lost due to collision with Boss");
+        Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
+
+        lives--;
+        for (int i = 0; i < livesUI.Length; i++)
+            livesUI[i].enabled = (i < lives);
+
+        if (lives <= 0)
+        {
+            Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            // Game Over here
+        }
+      
+    }
+}
+
 
       void OnCollisionEnter2D(Collision2D collision)
     {

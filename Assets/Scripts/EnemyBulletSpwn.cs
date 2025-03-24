@@ -20,9 +20,10 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player"){
             Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "Bullet"){
+        if (collision.gameObject.tag == "Bullet" || collision.gameObject.CompareTag("Torpedo") || collision.gameObject.CompareTag("HeetSeeker")){
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
+
     }
 }
