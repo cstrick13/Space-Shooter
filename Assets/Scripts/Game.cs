@@ -6,14 +6,18 @@ using Random = UnityEngine.Random;
 
 public class Game : MonoBehaviour
 {
+    public bool DEBUG;
+    public GameObject enemyPrefab;
+    public GameObject droneEnemyPrefab;
+    public Transform devSpawn;
+    public GameObject seekerCratePrefab;
+
+    public GameObject shootingEnemyPrefab;
     
     public GameObject bossincoming;   
     public TextMeshProUGUI txtScore;
 
  
-    public GameObject enemyPrefab;
-    public GameObject droneEnemyPrefab;
-    public GameObject shootingEnemyPrefab;
     public GameObject fallingObstaclePrefab;
     public GameObject bulletEnemyPrefab;
     public GameObject bossPrefab;
