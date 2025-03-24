@@ -116,15 +116,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""DevSpawnCrateSeeker"",
-                    ""type"": ""Button"",
-                    ""id"": ""40c21f0f-bf53-4ba4-8df3-fa545cf8b3ed"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -380,28 +371,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""ShootSeeker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fa6f699c-f8a5-4b34-963c-2e4a10d92740"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""DevSpawnCrateSeeker"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d6870971-2867-4846-926e-29509e4e9f1e"",
-                    ""path"": ""<Keyboard>/slash"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""DevSpawnCrateSeeker"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -420,7 +389,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Standard_DevSpawnDrone = m_Standard.FindAction("DevSpawnDrone", throwIfNotFound: true);
         m_Standard_DevSpawnEnemyShooter = m_Standard.FindAction("DevSpawnEnemyShooter", throwIfNotFound: true);
         m_Standard_ShootSeeker = m_Standard.FindAction("ShootSeeker", throwIfNotFound: true);
-        m_Standard_DevSpawnCrateSeeker = m_Standard.FindAction("DevSpawnCrateSeeker", throwIfNotFound: true);
     }
 
     ~@GameControls()
@@ -497,7 +465,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Standard_DevSpawnDrone;
     private readonly InputAction m_Standard_DevSpawnEnemyShooter;
     private readonly InputAction m_Standard_ShootSeeker;
-    private readonly InputAction m_Standard_DevSpawnCrateSeeker;
     public struct StandardActions
     {
         private @GameControls m_Wrapper;
@@ -512,7 +479,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         public InputAction @DevSpawnDrone => m_Wrapper.m_Standard_DevSpawnDrone;
         public InputAction @DevSpawnEnemyShooter => m_Wrapper.m_Standard_DevSpawnEnemyShooter;
         public InputAction @ShootSeeker => m_Wrapper.m_Standard_ShootSeeker;
-        public InputAction @DevSpawnCrateSeeker => m_Wrapper.m_Standard_DevSpawnCrateSeeker;
         public InputActionMap Get() { return m_Wrapper.m_Standard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -552,9 +518,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @ShootSeeker.started += instance.OnShootSeeker;
             @ShootSeeker.performed += instance.OnShootSeeker;
             @ShootSeeker.canceled += instance.OnShootSeeker;
-            @DevSpawnCrateSeeker.started += instance.OnDevSpawnCrateSeeker;
-            @DevSpawnCrateSeeker.performed += instance.OnDevSpawnCrateSeeker;
-            @DevSpawnCrateSeeker.canceled += instance.OnDevSpawnCrateSeeker;
         }
 
         private void UnregisterCallbacks(IStandardActions instance)
@@ -589,9 +552,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @ShootSeeker.started -= instance.OnShootSeeker;
             @ShootSeeker.performed -= instance.OnShootSeeker;
             @ShootSeeker.canceled -= instance.OnShootSeeker;
-            @DevSpawnCrateSeeker.started -= instance.OnDevSpawnCrateSeeker;
-            @DevSpawnCrateSeeker.performed -= instance.OnDevSpawnCrateSeeker;
-            @DevSpawnCrateSeeker.canceled -= instance.OnDevSpawnCrateSeeker;
         }
 
         public void RemoveCallbacks(IStandardActions instance)
@@ -621,6 +581,5 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnDevSpawnDrone(InputAction.CallbackContext context);
         void OnDevSpawnEnemyShooter(InputAction.CallbackContext context);
         void OnShootSeeker(InputAction.CallbackContext context);
-        void OnDevSpawnCrateSeeker(InputAction.CallbackContext context);
     }
 }

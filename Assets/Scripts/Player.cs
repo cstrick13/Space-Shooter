@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
-using Debug = UnityEngine.Debug;
 
 public class Player : MonoBehaviour{
     public float moveSpeed;
@@ -12,16 +10,8 @@ public class Player : MonoBehaviour{
     public GameObject seekerPrefab;
     public Transform spawnPt;
 
-    public bool hasSeeker = false;
     public int lives = 6;
     public Image[] livesUI;
-    private int bulletAmmo = 8;
-    private int bulletMax = 8;
-    private int torpedoAmmo = 3;
-    private int torpedoMax = 3;
-    private int seekerAmmo = 5;
-    private int seekerMax = 5;
-    private Coroutine reloadDelay;
 
     private float delay;
     public ParticleSystem smallExplosionPrefab;
@@ -32,68 +22,30 @@ public class Player : MonoBehaviour{
 
     // Start is called before the first frame update
     void Start() {
-     
+        
     }
 
     // Update is called once per frame
     void Update() {
         var input = Game.Input.Standard;
-        if (input.ShootBullet.WasPressedThisFrame())
-        {
-            if (bulletAmmo > 0)
-            {
-                //Could break music
-                StopAllCoroutines();
-                bulletAmmo--;
-                var bullet = Instantiate(bulletPrefab);
-                bullet.transform.position = spawnPt.position;
-                Destroy(bullet, 2f);
-            }
-            else
-            {
-                //Delay the reload
-                float timer = 1.5f;
-                reloadDelay = StartCoroutine(ReloadDelay(timer, 0));
-            }
+        if (input.ShootBullet.WasPressedThisFrame()){
+            var bullet = Instantiate(bulletPrefab);
+            bullet.transform.position = spawnPt.position;
+            Destroy(bullet, 2f);
         }
         if (input.ShootTorpedo.WasPressedThisFrame())
         {
-            print(torpedoAmmo);
-            if (torpedoAmmo > 0)
-            {
-                StopAllCoroutines();
-                torpedoAmmo--;
-                var torpedo = Instantiate(torpedoPrefab);
-                torpedo.transform.position = spawnPt.position;
-                Destroy(torpedo, 2f);
-            }
-            else
-            {
-                //Delay the reload
-                float timer = 2.5f;
-                reloadDelay = StartCoroutine(ReloadDelay(timer, 1));
-            }
+            var torpedo = Instantiate(torpedoPrefab);
+            torpedo.transform.position = spawnPt.position;
+            Destroy(torpedo, 2f);
         }
-        if (input.ShootSeeker.WasPressedThisFrame() && hasSeeker == true)
+        if (input.ShootSeeker.WasPressedThisFrame())
         {
-            print(seekerAmmo);
-            if (seekerAmmo > 0)
-            {
-                StopAllCoroutines();
-                seekerAmmo--;
-                var seeker = Instantiate(seekerPrefab);
-                seeker.transform.position = spawnPt.position;
-                Destroy(seeker, 10f);
-            }
-            else
-            {
-                //Delay the reload
-                float timer = 3.5f;
-                reloadDelay = StartCoroutine(ReloadDelay(timer, 2));
-            }
+            var seeker = Instantiate(seekerPrefab);
+            seeker.transform.position = spawnPt.position;
+            //DEV: May not want to destoy with timer due to nature of projectile
+            Destroy(seeker, 10f);
         }
-        
-        //DEV TOOLS/
 
         float up    = input.FlyUp.ReadValue<float>();
         float down  = input.FlyDown.ReadValue<float>();
@@ -152,26 +104,7 @@ public class Player : MonoBehaviour{
 
       void OnCollisionEnter2D(Collision2D collision)
     {
-       // Debug.Log("OnCollisionEnter2D");
+        Debug.Log("OnCollisionEnter2D");
     }
-    private IEnumerator ReloadDelay(float timer, int ammoType)
-    {
 
-        yield return new WaitForSeconds(timer);
-        //Bullets
-        if (ammoType == 0)
-        {
-            bulletAmmo = bulletMax;
-        }
-        //Torpedos
-        else if (ammoType == 1)
-        {
-            torpedoAmmo = torpedoMax;
-        }
-        //Seekers
-        else if (ammoType == 2)
-        {
-            seekerAmmo = seekerMax;
-        }
-    }
 }

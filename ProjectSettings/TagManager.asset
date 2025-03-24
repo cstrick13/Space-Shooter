@@ -8,7 +8,6 @@ TagManager:
   - Entity
   - Enemy
   - Bullet
-  - Game
   - ScoreBoundary
   - City
   - Boss

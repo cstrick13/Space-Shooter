@@ -94,15 +94,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "DevSpawnCrateSeeker",
-                    "type": "Button",
-                    "id": "40c21f0f-bf53-4ba4-8df3-fa545cf8b3ed",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -358,28 +349,6 @@
                     "action": "ShootSeeker",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "fa6f699c-f8a5-4b34-963c-2e4a10d92740",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "DevSpawnCrateSeeker",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d6870971-2867-4846-926e-29509e4e9f1e",
-                    "path": "<Keyboard>/slash",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "DevSpawnCrateSeeker",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }
