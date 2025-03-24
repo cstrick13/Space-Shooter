@@ -22,6 +22,7 @@ public class Player : MonoBehaviour{
     private int seekerAmmo = 5;
     private int seekerMax = 5;
 
+    private Coroutine reloadDelay;
     public Image[] livesUI;
 
     // Start is called before the first frame update
@@ -36,9 +37,9 @@ public class Player : MonoBehaviour{
         if (input.ShootBullet.WasPressedThisFrame()){
             if (bulletAmmo > 0)
             {
-                bulletAmmo--;
-                //Could break music.
+                //Could break music
                 StopAllCoroutines();
+                bulletAmmo--;
                 var bullet = Instantiate(bulletPrefab);
                 bullet.transform.position = spawnPt.position;
                 Destroy(bullet, 2f);
@@ -47,8 +48,7 @@ public class Player : MonoBehaviour{
             {
                 //Delay the reload
                 float timer = 1.5f;
-                Coroutine reload = StartCoroutine(ReloadDelay(timer,0));
-                StopCoroutine(reload);
+                reloadDelay = StartCoroutine(ReloadDelay(timer,0));
             }
         }
         if (input.ShootTorpedo.WasPressedThisFrame())
@@ -56,8 +56,8 @@ public class Player : MonoBehaviour{
             print(torpedoAmmo);
             if (torpedoAmmo > 0)
             {
+                StopAllCoroutines();
                 torpedoAmmo--;
-                StopCoroutine(ReloadDelay(0f,0));
                 var torpedo = Instantiate(torpedoPrefab);
                 torpedo.transform.position = spawnPt.position;
                 Destroy(torpedo, 2f);
@@ -66,8 +66,7 @@ public class Player : MonoBehaviour{
             {
                 //Delay the reload
                 float timer = 2.5f;
-                Coroutine reload = StartCoroutine(ReloadDelay(timer,1));
-                StopCoroutine(reload);
+                reloadDelay = StartCoroutine(ReloadDelay(timer,1));
             }
         }
         if (input.ShootSeeker.WasPressedThisFrame() && hasSeeker == true)
@@ -75,6 +74,7 @@ public class Player : MonoBehaviour{
             print(seekerAmmo);
             if (seekerAmmo > 0)
             {
+                StopAllCoroutines();
                 seekerAmmo--;
                 var seeker = Instantiate(seekerPrefab);
                 seeker.transform.position = spawnPt.position;
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour{
             {
                 //Delay the reload
                 float timer = 3.5f;
-                StartCoroutine(ReloadDelay(timer,2));
+                reloadDelay = StartCoroutine(ReloadDelay(timer,2));
             }
         }
         // DEV TOOLS/CHEATS, TO BE DELETED IN FINAL VERSION!
