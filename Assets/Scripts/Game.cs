@@ -18,9 +18,6 @@ public class Game : MonoBehaviour
     public TextMeshProUGUI txtScore;
 
  
-    public GameObject enemyPrefab;
-    public GameObject droneEnemyPrefab;
-    public GameObject shootingEnemyPrefab;
     public GameObject fallingObstaclePrefab;
     public GameObject bulletEnemyPrefab;
     public GameObject bossPrefab;
