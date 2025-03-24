@@ -34,6 +34,10 @@ public class Game : MonoBehaviour
     private float bossBannerTimer;
     private float score = 0;
 
+    private float crateTimer;
+    public float crateDelay;
+    private bool crateSpawned;
+
     public static Game Instance { get; private set; }
     public static GameControls Input { get; private set; }
 
@@ -42,8 +46,9 @@ public class Game : MonoBehaviour
         Instance = this;
         Input = new GameControls();
         Input.Enable();
-
+        crateTimer = Time.time;
         enemyTimer = 3f;
+        crateSpawned = false;
         fallingObstacleTimer = 1f;
         bossTimer = bossSpawnDelay;
 
@@ -65,7 +70,6 @@ public class Game : MonoBehaviour
             enemyTimer = Random.Range(2f, 7f);
         }
     }
-
     // Boss spawn logic
     if (!bossSpawned)
     {
@@ -88,7 +92,12 @@ public class Game : MonoBehaviour
             bossBannerVisible = false;
         }
     }
-
+        //Spawn seeker crate logic
+        if ((Time.time - crateTimer > crateDelay) && crateSpawned != true)
+        {
+            Instantiate(seekerCratePrefab);
+            crateSpawned = true;
+        }
     // Banner countdown
     if (bossBannerVisible)
     {
