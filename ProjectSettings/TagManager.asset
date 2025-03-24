@@ -11,6 +11,9 @@ TagManager:
   - ScoreBoundary
   - City
   - Boss
+  - Undefined
+  - Torpedo
+  - HeetSeeker
   layers:
   - Default
   - TransparentFX

@@ -55,7 +55,9 @@ public class Game : MonoBehaviour
         if (enemyTimer <= 0f)
         {
             Instantiate(enemyPrefab);
-        
+            Instantiate(droneEnemyPrefab);
+            Instantiate(shootingEnemyPrefab);
+            Instantiate(bulletEnemyPrefab);
             enemyTimer = Random.Range(2f, 7f);
         }
     }
@@ -116,7 +118,7 @@ public class Game : MonoBehaviour
 
     private void ClearAllRegularEnemies()
     {
-        foreach (string tag in new[] { "Enemy", "Bullet","Torpedo","HeetSeeker" })
+        foreach (string tag in new[] { "Enemy", "Bullet","Torpedeo","HeetSeeker" })
         {
             foreach (GameObject go in GameObject.FindGameObjectsWithTag(tag))
                 Destroy(go);
