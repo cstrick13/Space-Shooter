@@ -4010,6 +4010,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 4790529273430757969, guid: 565511773eb3f01838a3f5dae62a84f8, type: 3}
   bossSpawnDelay: 20
   bossBannerDuration: 3
+  crateDelay: 15
 --- !u!4 &557962292
 Transform:
   m_ObjectHideFlags: 0
