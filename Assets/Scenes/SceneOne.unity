@@ -2266,13 +2266,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 1
-  bossincoming: {fileID: 427383953}
-  txtScore: {fileID: 1711931681}
   enemyPrefab: {fileID: 113558776585387563, guid: a4da7ac4220f30e0289116ea1f688f32, type: 3}
   droneEnemyPrefab: {fileID: 4667046774559628864, guid: d8ed15c28c4709544990216a0e665434, type: 3}
   devSpawn: {fileID: 1202803861}
   seekerCratePrefab: {fileID: 2621207767673545740, guid: 8685592042b9e8147b4c411cb42ce833, type: 3}
   shootingEnemyPrefab: {fileID: 5626627056540347939, guid: 594d229e5960a1fd0bda9a100a354426, type: 3}
+  bossincoming: {fileID: 427383953}
+  txtScore: {fileID: 1711931681}
   fallingObstaclePrefab: {fileID: 675217804572358250, guid: 465dc28373363a40e8622a88f5729b5b, type: 3}
   bulletEnemyPrefab: {fileID: 1337120204224173054, guid: c46deaebcde6465b3b3ca52e237ea766, type: 3}
   bossPrefab: {fileID: 4790529273430757969, guid: 565511773eb3f01838a3f5dae62a84f8, type: 3}
@@ -11399,4 +11399,3 @@ SceneRoots:
   - {fileID: 170504226}
   - {fileID: 588483747}
   - {fileID: 1202803861}
-  - {fileID: 1855211708}

@@ -15,6 +15,13 @@ public class Player : MonoBehaviour{
     public bool hasSeeker = false;
     public int lives = 6;
     public Image[] livesUI;
+    private int bulletAmmo = 8;
+    private int bulletMax = 8;
+    private int torpedoAmmo = 3;
+    private int torpedoMax = 3;
+    private int seekerAmmo = 5;
+    private int seekerMax = 5;
+    private Coroutine reloadDelay;
 
     private float delay;
     public ParticleSystem smallExplosionPrefab;
@@ -31,37 +38,58 @@ public class Player : MonoBehaviour{
     // Update is called once per frame
     void Update() {
         var input = Game.Input.Standard;
-        if (input.ShootBullet.WasPressedThisFrame()){
-            var bullet = Instantiate(bulletPrefab);
-            bullet.transform.position = spawnPt.position;
-            Destroy(bullet, 2f);
+        if (input.ShootBullet.WasPressedThisFrame())
+        {
+            if (bulletAmmo > 0)
+            {
+                //Could break music
+                StopAllCoroutines();
+                bulletAmmo--;
+                var bullet = Instantiate(bulletPrefab);
+                bullet.transform.position = spawnPt.position;
+                Destroy(bullet, 2f);
+            }
+            else
+            {
+                //Delay the reload
+                float timer = 1.5f;
+                reloadDelay = StartCoroutine(ReloadDelay(timer, 0));
+            }
         }
         if (input.ShootTorpedo.WasPressedThisFrame())
         {
-            var torpedo = Instantiate(torpedoPrefab);
-            torpedo.transform.position = spawnPt.position;
-            Destroy(torpedo, 2f);
+            print(torpedoAmmo);
+            if (torpedoAmmo > 0)
+            {
+                StopAllCoroutines();
+                torpedoAmmo--;
+                var torpedo = Instantiate(torpedoPrefab);
+                torpedo.transform.position = spawnPt.position;
+                Destroy(torpedo, 2f);
+            }
+            else
+            {
+                //Delay the reload
+                float timer = 2.5f;
+                reloadDelay = StartCoroutine(ReloadDelay(timer, 1));
+            }
         }
         if (input.ShootSeeker.WasPressedThisFrame() && hasSeeker == true)
         {
-            var seeker = Instantiate(seekerPrefab);
-            seeker.transform.position = spawnPt.position;
-            //DEV: May not want to destoy with timer due to nature of projectile
-            Destroy(seeker, 10f);
-        }
-        // DEV TOOLS/CHEATS, TO BE DELETED IN FINAL VERSION!
-        Game game = GameObject.FindWithTag("Game").GetComponent<Game>();
-        if (game.DEBUG == true)
-        {
-            if (input.DevSpawnDrone.WasPressedThisFrame())
+            print(seekerAmmo);
+            if (seekerAmmo > 0)
             {
-                var droneEnemy = Instantiate(game.droneEnemyPrefab);
-                droneEnemy.transform.position = game.devSpawn.position;
+                StopAllCoroutines();
+                seekerAmmo--;
+                var seeker = Instantiate(seekerPrefab);
+                seeker.transform.position = spawnPt.position;
+                Destroy(seeker, 10f);
             }
-            if (input.DevSpawnCrateSeeker.WasPressedThisFrame())
+            else
             {
-                var seekerCrate = Instantiate(game.seekerCratePrefab);
-                seekerCrate.transform.position = game.devSpawn.position;
+                //Delay the reload
+                float timer = 3.5f;
+                reloadDelay = StartCoroutine(ReloadDelay(timer, 2));
             }
         }
         
@@ -113,5 +141,24 @@ public class Player : MonoBehaviour{
     {
        // Debug.Log("OnCollisionEnter2D");
     }
+    private IEnumerator ReloadDelay(float timer, int ammoType)
+    {
 
+        yield return new WaitForSeconds(timer);
+        //Bullets
+        if (ammoType == 0)
+        {
+            bulletAmmo = bulletMax;
+        }
+        //Torpedos
+        else if (ammoType == 1)
+        {
+            torpedoAmmo = torpedoMax;
+        }
+        //Seekers
+        else if (ammoType == 2)
+        {
+            seekerAmmo = seekerMax;
+        }
+    }
 }
