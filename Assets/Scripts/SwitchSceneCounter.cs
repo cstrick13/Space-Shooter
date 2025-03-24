@@ -5,22 +5,38 @@ using UnityEngine.SceneManagement;
 
 public class SwitchSceneCounter : MonoBehaviour
 {
-    private bool started = false;
-    public float startTime;
-    private float elapsed;
-    public string SceneName;
-     
-     void Start(){
+      public GameObject background;         // Drag your “Background” GameObject here
+    public GameObject particleSystemObj;  // Drag your Particle System GameObject here
+    public float delaySeconds = 15f;
 
-     }
+    private float startTime;
 
-    public void Update(){
-         elapsed = Time.time - startTime;
-        print(elapsed);
-        if (elapsed > 15f){
-            SceneManager.LoadSceneAsync(SceneName);
+    void Start()
+    {
+        startTime = Time.time;
+
+        // Make sure background starts disabled; particle stays enabled until the swap
+        if (background != null) background.SetActive(false);
+        if (particleSystemObj != null) particleSystemObj.SetActive(true);
+    }
+
+    void Update()
+    {
+        if (Time.time - startTime > delaySeconds)
+        {
+            if (background != null) background.SetActive(true);
+            
+            if (particleSystemObj != null)
+            {
+                // Option A — completely turn it off:
+                particleSystemObj.SetActive(false);
+
+                // Option B — only stop emission (GameObject remains active):
+                // particleSystemObj.GetComponent<ParticleSystem>()?.Stop();
+            }
+
+            enabled = false;
         }
-        print("test");
     }
 
 }

@@ -68,7 +68,7 @@ public class Player : MonoBehaviour{
         // Handle enemy collision to destroy the enemy object
         // we can instantiate an animation of an explosion  here whenever the player collides with an explosion and also can do the same by attaching a collision script similar to this on a bullet
          Debug.Log("Collision with: " + collision.gameObject.name + " Tag: " + collision.gameObject.tag);
-            if (collision.gameObject.tag == "Enemy"){
+            if (collision.gameObject.tag == "Enemy" || collision.CompareTag("Boss") ){
                 Debug.Log("Life lost due to collision with: " + collision.gameObject.name);
                 Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
                 Destroy(collision.gameObject);
