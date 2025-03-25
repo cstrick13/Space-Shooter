@@ -106,6 +106,7 @@ MonoBehaviour:
   shootInterval: 1
   smallExplosionPrefab: {fileID: 5986737659009389610, guid: c5ae1f516955c222bae82617e65f291c, type: 3}
   explosionPrefab: {fileID: 4031796529509398988, guid: d158945f86bbf923ea0fc630234d6ae5, type: 3}
+  smallexplosionAudio: {fileID: 8300000, guid: 8258faf950a72979296ba57f3a7e503f, type: 3}
 --- !u!50 &6893624300026094830
 Rigidbody2D:
   serializedVersion: 4

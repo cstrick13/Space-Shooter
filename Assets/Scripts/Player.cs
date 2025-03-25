@@ -28,6 +28,20 @@ public class Player : MonoBehaviour{
     private int seekerMax = 5;
     private Coroutine reloadDelay;
 
+    public AudioClip clipBullet;
+
+    public AudioClip clipTorpedo;
+
+    public AudioClip clipSeeker;
+
+    public AudioClip clipReload;
+
+    public AudioClip explosionAudio;
+    
+    public AudioClip smallExplosionAudio;
+
+    private AudioSource audioSrc;
+
     private float delay;
     public ParticleSystem smallExplosionPrefab;
 
@@ -42,6 +56,8 @@ public class Player : MonoBehaviour{
     void Start() {
         GameObject obj = GameObject.Find("Game");
         MyScript = obj.GetComponent<GameOverMenu>();
+        audioSrc = GetComponent<AudioSource>();
+     
     }
 
     // Update is called once per frame
@@ -53,6 +69,8 @@ public class Player : MonoBehaviour{
             {
                 //Could break music
                 StopAllCoroutines();
+                audioSrc.clip = clipBullet;
+                audioSrc.Play();
                 bulletAmmo--;
                 var bullet = Instantiate(bulletPrefab);
                 bullet.transform.position = spawnPt.position;
@@ -71,6 +89,8 @@ public class Player : MonoBehaviour{
             if (torpedoAmmo > 0)
             {
                 StopAllCoroutines();
+                audioSrc.clip = clipTorpedo;
+                audioSrc.Play();
                 torpedoAmmo--;
                 var torpedo = Instantiate(torpedoPrefab);
                 torpedo.transform.position = spawnPt.position;
@@ -89,6 +109,8 @@ public class Player : MonoBehaviour{
             if (seekerAmmo > 0)
             {
                 StopAllCoroutines();
+                audioSrc.clip = clipSeeker;
+                audioSrc.Play();
                 seekerAmmo--;
                 var seeker = Instantiate(seekerPrefab);
                 seeker.transform.position = spawnPt.position;
@@ -130,21 +152,29 @@ public class Player : MonoBehaviour{
     void OnTriggerEnter2D(Collider2D collision){
     if (collision.CompareTag("Enemy"))
     {
-        Debug.Log("Life lost due to collision with: " + collision.gameObject.name);
-        Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
-        Destroy(collision.gameObject);
-
+         Debug.Log("Life lost due to collision with: " + collision.gameObject.name);
         lives--;
         for (int i = 0; i < livesUI.Length; i++)
             livesUI[i].enabled = (i < lives);
 
         if (lives <= 0)
         {
+            // Game over: play the big explosion sound only.
+            AudioSource.PlayClipAtPoint(explosionAudio, collision.transform.position, 1.5f);
             Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
             gameScript.die();
             Destroy(gameObject);            
             MyScript.GameOver();
             // Game Over here
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+        else
+        {
+            // Still alive: play the small explosion sound.
+            Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
+            AudioSource.PlayClipAtPoint(smallExplosionAudio, collision.transform.position, 1.5f);
+            Destroy(collision.gameObject);
         }
     }
     else if (collision.CompareTag("Boss"))
@@ -161,6 +191,7 @@ public class Player : MonoBehaviour{
             MyScript.GameOver(); 
             gameScript.die();
             Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
+            AudioSource.PlayClipAtPoint(explosionAudio, collision.transform.position,1.5f);
             Destroy(gameObject);
             // Game Over here
         }
@@ -192,5 +223,8 @@ public class Player : MonoBehaviour{
         {
             seekerAmmo = seekerMax;
         }
+
+          audioSrc.clip = clipReload;
+          audioSrc.Play();
     }
 }

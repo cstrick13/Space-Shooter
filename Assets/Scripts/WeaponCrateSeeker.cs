@@ -5,6 +5,9 @@ using UnityEngine;
 public class WeaponCrate : MonoBehaviour
 {
     private GameObject player;
+    public AudioClip powerUpAudio;
+
+    private AudioSource audioSrc;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,7 @@ public class WeaponCrate : MonoBehaviour
         {
             Player playerComponents = GameObject.FindWithTag("Player").GetComponent<Player>();
             playerComponents.hasSeeker = true;
+             AudioSource.PlayClipAtPoint(powerUpAudio, transform.position);
             Destroy(gameObject);
             //Destroy(collision.gameObject);
         }

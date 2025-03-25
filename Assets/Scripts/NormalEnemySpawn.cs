@@ -8,6 +8,8 @@ public class NormalEnemySpawn : MonoBehaviour
     private float lives = 2;
 
      public ParticleSystem smallExplosionPrefab;
+     public AudioClip smallexplosionAudio;
+    private AudioSource audioSrc;
     
     void Start()
     {
@@ -36,6 +38,7 @@ public class NormalEnemySpawn : MonoBehaviour
         if (lives <= 0)
         {
              Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
+              AudioSource.PlayClipAtPoint(smallexplosionAudio, transform.position);
             Game.Instance.AddToScore(60);
             Destroy(gameObject);
         }

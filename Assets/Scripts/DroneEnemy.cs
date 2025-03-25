@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
 
+
 public class DroneEnemy : MonoBehaviour
 {
     public GameObject target;
     public float moveSpeed;
     public float lives = 4;
+    public AudioClip smallexplosionAudio;
+    private AudioSource audioSrc;
 
     public ParticleSystem smallExplosionPrefab;
     // Start is called before the first frame update
@@ -42,7 +45,8 @@ public class DroneEnemy : MonoBehaviour
 
         if (lives <= 0)
         {
-             Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
+            Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
+             AudioSource.PlayClipAtPoint(smallexplosionAudio, transform.position);
             Game.Instance.AddToScore(1038);
             Destroy(gameObject);
         }
