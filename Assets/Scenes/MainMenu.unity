@@ -458,7 +458,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SPACE SHOOTER
+  m_text: CYBER CITY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c36b5ae7c427d094ba913cfad8cde615, type: 2}
   m_sharedMaterial: {fileID: 2835083393089035727, guid: c36b5ae7c427d094ba913cfad8cde615, type: 2}
@@ -844,7 +844,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SPACE SHOOTER
+  m_text: CYBER CITY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c36b5ae7c427d094ba913cfad8cde615, type: 2}
   m_sharedMaterial: {fileID: 2835083393089035727, guid: c36b5ae7c427d094ba913cfad8cde615, type: 2}
