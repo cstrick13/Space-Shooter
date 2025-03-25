@@ -26,6 +26,7 @@ public class Boss : MonoBehaviour
     private AudioSource audioSrc;
     public GameObject target;
     private bool isVisible = false;
+    Victory MyScript;
 
     void Start()
     {
@@ -34,6 +35,8 @@ public class Boss : MonoBehaviour
         transform.position = startPos;
         target = GameObject.FindWithTag("Player");
         GetComponent<Rigidbody2D>().AddForce(Vector2.left * entrySpeed);
+        GameObject obj = GameObject.Find("Game");
+        MyScript = obj.GetComponent<Victory>();
     }
 
      void Update()
@@ -103,6 +106,7 @@ public class Boss : MonoBehaviour
 
         if (currentLives <= 0)
             Die();
+
     }
     else if (collision.CompareTag("ScoreBoundary"))
     {
@@ -118,6 +122,7 @@ public class Boss : MonoBehaviour
         AudioSource.PlayClipAtPoint(explosionAudio, transform.position);
         Game.Instance.AddToScore(5000);
         Destroy(gameObject);
+        MyScript.VictoryScreen();
     }
 
     void OnBecameVisible()

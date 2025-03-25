@@ -4324,6 +4324,7 @@ GameObject:
   - component: {fileID: 557962291}
   - component: {fileID: 557962293}
   - component: {fileID: 557962294}
+  - component: {fileID: 557962295}
   m_Layer: 0
   m_Name: Game
   m_TagString: Game
@@ -4406,6 +4407,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOver: {fileID: 197905574}
   gameOverAudio: {fileID: 0}
+--- !u!114 &557962295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557962290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 193c8a57007d05b418d9414873f467dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  victoryScreen: {fileID: 1052927271}
 --- !u!1 &588483746
 GameObject:
   m_ObjectHideFlags: 0
@@ -15602,7 +15616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1605317720
 Transform:
   m_ObjectHideFlags: 0
@@ -15802,6 +15816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1663741101}
   - component: {fileID: 1663741102}
+  - component: {fileID: 1663741103}
   m_Layer: 5
   m_Name: Progress Bar
   m_TagString: Untagged
@@ -15878,10 +15893,29 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.014672365
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1663741103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663741100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db47b3a26794d68d2bf75fe47ee39d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeProgressed: {fileID: 557962293}
+  progress: {fileID: 1663741102}
+  fillAmount: 0.014672365
+  mask: {fileID: 80830218}
+  fill: {fileID: 80830218}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  handle: {fileID: 224388268}
 --- !u!1 &1676541659
 GameObject:
   m_ObjectHideFlags: 0
