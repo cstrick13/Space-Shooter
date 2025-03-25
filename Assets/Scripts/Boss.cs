@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Boss : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class Boss : MonoBehaviour
     public AudioClip explosionAudio;
 
     private AudioSource audioSrc;
-
+    public GameObject target;
     private bool isVisible = false;
 
     void Start()
@@ -31,6 +32,7 @@ public class Boss : MonoBehaviour
         currentLives = maxLives;
         Vector3 startPos = new Vector3(12, Random.Range(-3f, 2f), 0);
         transform.position = startPos;
+        target = GameObject.FindWithTag("Player");
         GetComponent<Rigidbody2D>().AddForce(Vector2.left * entrySpeed);
     }
 
@@ -46,6 +48,12 @@ public class Boss : MonoBehaviour
 
         if (hasStopped)
         {
+            //Find the point x amount in front of players current position to move towards.
+            Vector3 align = new Vector3((stopX), target.transform.position.y, target.transform.position.z);
+            if (target.transform.position != this.transform.position)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, align, 1.25f * Time.deltaTime);
+            }
             shootTimer -= Time.deltaTime;
             if (shootTimer <= 0f)
             {
