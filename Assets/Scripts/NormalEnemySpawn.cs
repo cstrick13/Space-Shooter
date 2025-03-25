@@ -5,7 +5,7 @@ using UnityEngine;
 public class NormalEnemySpawn : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float lives = 1;
+    private float lives = 5;
 
      public ParticleSystem smallExplosionPrefab;
      public AudioClip smallexplosionAudio;

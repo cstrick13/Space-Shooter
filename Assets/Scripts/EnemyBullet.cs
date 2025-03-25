@@ -6,7 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private float lives = 5;
+    private float lives = 1;
 
     public ParticleSystem smallExplosionPrefab;
     public AudioClip smallexplosionAudio;
@@ -20,7 +20,7 @@ public class EnemyBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * 2f * Time.deltaTime);
+        transform.Translate(Vector3.left * 15f * Time.deltaTime);
     }
 
       void OnTriggerEnter2D(Collider2D collision){
