@@ -18,7 +18,6 @@ public class Game : MonoBehaviour
     public GameObject bossincoming;   
     public TextMeshProUGUI txtScore;
 
- 
     public GameObject fallingObstaclePrefab;
     public GameObject bulletEnemyPrefab;
     public GameObject bossPrefab;
@@ -26,12 +25,9 @@ public class Game : MonoBehaviour
 
     GameOverMenu MyScript;
 
-
- 
     public float bossSpawnDelay = 50f;
     public float bossBannerDuration = 6f;
     private float enemyTimer;
-    private float fallingObstacleTimer;
     private float bossTimer;
 
     private bool bossSpawned = false;
@@ -49,7 +45,10 @@ public class Game : MonoBehaviour
     public static GameControls Input { get; private set; }
     public float alpha = 1f;
 
-     private bool gameOverTriggered = false;
+    private bool gameOverTriggered = false;
+
+    // New timer for falling obstacles during the boss fight.
+    private float bossFallingTimer;
 
     void Start()
     {
@@ -59,7 +58,6 @@ public class Game : MonoBehaviour
         crateTimer = Time.time;
         enemyTimer = 3f;
         crateSpawned = false;
-        fallingObstacleTimer = 1f;
         bossTimer = bossSpawnDelay;
         GameObject obj = GameObject.Find("Game");
         MyScript = obj.GetComponent<GameOverMenu>();
@@ -68,19 +66,20 @@ public class Game : MonoBehaviour
             bossincoming.SetActive(false);
         }
 
-         bossWarningSource = gameObject.AddComponent<AudioSource>();
+        bossWarningSource = gameObject.AddComponent<AudioSource>();
         bossWarningSource.clip = bossWarningAudio;
     }
 
     void Update()
     {
-
-        if (flashbangPIC.activeInHierarchy){
+        if (flashbangPIC.activeInHierarchy)
+        {
             flashbangPIC.GetComponent<Image>().color = new Color(255f, 255f, 255f, alpha);
             alpha -= 0.005f; 
             Debug.Log(1);   
         }
-         if (!bossSpawned)
+
+        if (!bossSpawned)
         {
             enemyTimer -= Time.deltaTime;
             if (enemyTimer <= 0f)
@@ -92,56 +91,65 @@ public class Game : MonoBehaviour
                 enemyTimer = Random.Range(2f, 7f);
             }
         }
-    // Boss spawn logic
-    if (!bossSpawned)
-    {
-        bossTimer -= Time.deltaTime;
 
-        // Time to show banner
-        if (bossTimer <= 0f && !bossBannerVisible)
+        // Boss spawn logic
+        if (!bossSpawned)
         {
-            ShowBossBanner();
-            
+            bossTimer -= Time.deltaTime;
+
+            // Time to show banner
+            if (bossTimer <= 0f && !bossBannerVisible)
+            {
+                ShowBossBanner();
+            }
+
+            // After banner finishes, spawn boss
+            if (bossBannerVisible && bossBannerTimer <= 0f)
+            {
+                ClearAllRegularEnemies();
+                Instantiate(bossPrefab);
+                bossSpawned = true;
+                bossincoming.SetActive(false);
+                bossBannerVisible = false;
+                bossWarningSource.Stop();
+
+                // Set the timer to delay falling obstacles by 40 seconds after the boss appears
+                bossFallingTimer = 5f;
+            }
         }
 
-        // After banner finishes, spawn boss
-        if (bossBannerVisible && bossBannerTimer <= 0f)
+        // Falling obstacles in boss scene after 40 seconds
+        if (bossSpawned)
         {
-            ClearAllRegularEnemies();
-               // Falling obstacles (unchanged)
-                fallingObstacleTimer -= Time.deltaTime;
-                if (fallingObstacleTimer <= 0f){
-                    Instantiate(fallingObstaclePrefab);
-                    fallingObstacleTimer = Random.Range(2f, 7f);
-                    }
-            Instantiate(bossPrefab);
-            bossSpawned = true;
-            bossincoming.SetActive(false);
-            bossBannerVisible = false;
-            bossWarningSource.Stop();
+            bossFallingTimer -= Time.deltaTime;
+            if (bossFallingTimer <= 0f)
+            {
+                Instantiate(fallingObstaclePrefab);
+                // Reset timer to a random interval (adjust as needed)
+                bossFallingTimer = Random.Range(2f, 7f);
+            }
         }
-    }
-        //Spawn seeker crate logic
-        if ((Time.time - crateTimer > crateDelay) && crateSpawned != true)
+
+        // Spawn seeker crate logic
+        if ((Time.time - crateTimer > crateDelay) && !crateSpawned)
         {
             Instantiate(seekerCratePrefab);
             crateSpawned = true;
         }
-    // Banner countdown
-    if (bossBannerVisible)
-    {
-        bossBannerTimer -= Time.deltaTime;
-    }
 
+        // Banner countdown
+        if (bossBannerVisible)
+        {
+            bossBannerTimer -= Time.deltaTime;
+        }
 
-    txtScore.text = score.ToString("000000");
-      if (score < 0 && !gameOverTriggered)
+        txtScore.text = score.ToString("000000");
+        if (score < 0 && !gameOverTriggered)
         {
             gameOverTriggered = true; 
             MyScript.GameOver();
             die();
         }
-
     }
 
     private void ShowBossBanner()
@@ -160,7 +168,7 @@ public class Game : MonoBehaviour
 
     private void ClearAllRegularEnemies()
     {
-        foreach (string tag in new[] { "Enemy", "Bullet","Torpedo","HeetSeeker" })
+        foreach (string tag in new[] { "Enemy", "Bullet", "Torpedo", "HeetSeeker" })
         {
             foreach (GameObject go in GameObject.FindGameObjectsWithTag(tag))
                 Destroy(go);
