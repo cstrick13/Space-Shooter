@@ -7,12 +7,12 @@ public class ShootingEnemy : MonoBehaviour{
     public GameObject enemybulletPrefab;
     public Transform spawnPt;
     
-    public float shootInterval = .5f; 
+    private float shootInterval = 2f; 
     private float shootTimer = 0f;
     
     private bool isVisible = false;
 
-    private float lives = 6;
+    private float lives = 4;
     public ParticleSystem smallExplosionPrefab;
 
     public ParticleSystem explosionPrefab;
@@ -23,7 +23,7 @@ public class ShootingEnemy : MonoBehaviour{
     void Start()
     {
         // Optionally set initial position here if needed:
-        GetComponent<Rigidbody2D>().AddForce(Vector2.left * Random.Range(100f, 500f));
+        GetComponent<Rigidbody2D>().AddForce(Vector2.left * Random.Range(25f, 75f));
         Vector3 initPos = new Vector3(12, Random.Range(-3f, 3f), 0);
         transform.position = initPos;
     }
@@ -34,12 +34,13 @@ public class ShootingEnemy : MonoBehaviour{
         if (!isVisible)
             return;
         
-
-        shootTimer -= Time.deltaTime;
-        if (shootTimer <= 0f)
+        shootTimer += Time.deltaTime;
+        if (shootTimer >= shootInterval)
         {
+            print("Shoot Timer: " + shootTimer);
+            print("Shoot Interval:" + shootInterval);
             Shoot();
-            shootTimer = shootInterval;
+            shootTimer = 0;
         }
     }
 

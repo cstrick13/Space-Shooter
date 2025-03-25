@@ -13,16 +13,24 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * 30 * Time.deltaTime);
+        transform.Translate(Vector3.left * 7.5f * Time.deltaTime);
     }
 
      void OnTriggerEnter2D(Collider2D collision){
         if (collision.gameObject.tag == "Player"){
             Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "Bullet" || collision.gameObject.CompareTag("Torpedo") || collision.gameObject.CompareTag("HeetSeeker")){
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
+        if (collision.gameObject.tag == "Bullet" || collision.gameObject.CompareTag("Torpedo") || collision.gameObject.CompareTag("HeetSeeker"))
+        {
+            if (collision.gameObject.CompareTag("Torpedo") == true)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+            }
         }
 
     }
