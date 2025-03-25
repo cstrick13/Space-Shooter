@@ -49,6 +49,8 @@ public class Game : MonoBehaviour
     public static GameControls Input { get; private set; }
     public float alpha = 1f;
 
+     private bool gameOverTriggered = false;
+
     void Start()
     {
         Instance = this;
@@ -134,10 +136,12 @@ public class Game : MonoBehaviour
 
 
     txtScore.text = score.ToString("000000");
-    if (score < 0){
-         MyScript.GameOver();
-         this.die();
-    }
+      if (score < 0 && !gameOverTriggered)
+        {
+            gameOverTriggered = true; 
+            MyScript.GameOver();
+            die();
+        }
 
     }
 
