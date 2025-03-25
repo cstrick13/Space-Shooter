@@ -17,6 +17,9 @@ public class ShootingEnemy : MonoBehaviour{
 
     public ParticleSystem explosionPrefab;
 
+    public AudioClip smallexplosionAudio;
+    private AudioSource audioSrc;
+
     void Start()
     {
         // Optionally set initial position here if needed:
@@ -56,6 +59,7 @@ public class ShootingEnemy : MonoBehaviour{
         if (lives <= 0)
         {
              Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
+              AudioSource.PlayClipAtPoint(smallexplosionAudio, transform.position);
             Game.Instance.AddToScore(400);
             Destroy(gameObject);
         }

@@ -20,6 +20,10 @@ public class Boss : MonoBehaviour
     public ParticleSystem smallExplosionPrefab;
     public ParticleSystem explosionPrefab;
 
+    public AudioClip explosionAudio;
+
+    private AudioSource audioSrc;
+
     private bool isVisible = false;
 
     void Start()
@@ -103,6 +107,7 @@ public class Boss : MonoBehaviour
     void Die()
     {
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(explosionAudio, transform.position);
         Game.Instance.AddToScore(5000);
         Destroy(gameObject);
     }

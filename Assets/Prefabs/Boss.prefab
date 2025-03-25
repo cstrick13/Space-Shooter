@@ -222,6 +222,7 @@ MonoBehaviour:
   maxLives: 50
   smallExplosionPrefab: {fileID: 5986737659009389610, guid: c5ae1f516955c222bae82617e65f291c, type: 3}
   explosionPrefab: {fileID: 4031796529509398988, guid: d158945f86bbf923ea0fc630234d6ae5, type: 3}
+  explosionAudio: {fileID: 8300000, guid: 36d7de1a5cc228fe6b8cf8a171bb1ae0, type: 3}
 --- !u!1 &5998598590315384742
 GameObject:
   m_ObjectHideFlags: 0

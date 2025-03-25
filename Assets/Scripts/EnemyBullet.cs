@@ -9,6 +9,8 @@ public class EnemyBullet : MonoBehaviour
     private float lives = 1;
 
     public ParticleSystem smallExplosionPrefab;
+    public AudioClip smallexplosionAudio;
+    private AudioSource audioSrc;
     void Start()
     {
         Vector3 initPos = new Vector3(12, Random.Range(-3f, 3f), 0);
@@ -37,6 +39,7 @@ public class EnemyBullet : MonoBehaviour
         if (lives <= 0)
         {
              Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
+             AudioSource.PlayClipAtPoint(smallexplosionAudio, transform.position);
             Game.Instance.AddToScore(100);
             Destroy(gameObject);
         }

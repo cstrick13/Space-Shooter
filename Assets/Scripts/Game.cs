@@ -23,8 +23,8 @@ public class Game : MonoBehaviour
     public GameObject bossPrefab;
 
  
-    public float bossSpawnDelay = 30f;
-    public float bossBannerDuration = 3f;
+    public float bossSpawnDelay = 50f;
+    public float bossBannerDuration = 6f;
     private float enemyTimer;
     private float fallingObstacleTimer;
     private float bossTimer;
@@ -37,6 +37,8 @@ public class Game : MonoBehaviour
     private float crateTimer;
     public float crateDelay;
     private bool crateSpawned;
+    public AudioClip bossWarningAudio;  // Assign this clip in the Inspector
+    private AudioSource bossWarningSource;
 
     public static Game Instance { get; private set; }
     public static GameControls Input { get; private set; }
@@ -52,8 +54,12 @@ public class Game : MonoBehaviour
         fallingObstacleTimer = 1f;
         bossTimer = bossSpawnDelay;
 
-        if (bossincoming != null) 
+        if (bossincoming != null){
             bossincoming.SetActive(false);
+        }
+
+         bossWarningSource = gameObject.AddComponent<AudioSource>();
+        bossWarningSource.clip = bossWarningAudio;
     }
 
     void Update()
@@ -86,10 +92,18 @@ public class Game : MonoBehaviour
         if (bossBannerVisible && bossBannerTimer <= 0f)
         {
             ClearAllRegularEnemies();
+               // Falling obstacles (unchanged)
+            fallingObstacleTimer -= Time.deltaTime;
+            if (fallingObstacleTimer <= 0f)
+        {
+        Instantiate(fallingObstaclePrefab);
+        fallingObstacleTimer = Random.Range(2f, 7f);
+        }
             Instantiate(bossPrefab);
             bossSpawned = true;
             bossincoming.SetActive(false);
             bossBannerVisible = false;
+            bossWarningSource.Stop();
         }
     }
         //Spawn seeker crate logic
@@ -104,13 +118,6 @@ public class Game : MonoBehaviour
         bossBannerTimer -= Time.deltaTime;
     }
 
-    // Falling obstacles (unchanged)
-    fallingObstacleTimer -= Time.deltaTime;
-    if (fallingObstacleTimer <= 0f)
-    {
-        Instantiate(fallingObstaclePrefab);
-        fallingObstacleTimer = Random.Range(2f, 7f);
-    }
 
     txtScore.text = score.ToString("000000");
     if (score < 0) Debug.Log("Game Over");
@@ -123,6 +130,7 @@ public class Game : MonoBehaviour
             bossincoming.SetActive(true);
             bossBannerVisible = true;
             bossBannerTimer = bossBannerDuration;
+            bossWarningSource.Play();
         }
     }
 
