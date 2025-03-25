@@ -25,7 +25,7 @@ public class Game : MonoBehaviour
  
     public float bossSpawnDelay = 30f;
     public float bossBannerDuration = 3f;
-    private float enemyTimer;
+    public float enemyTimer;
     private float fallingObstacleTimer;
     private float bossTimer;
 

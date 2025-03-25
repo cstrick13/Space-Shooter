@@ -4010,6 +4010,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 4790529273430757969, guid: 565511773eb3f01838a3f5dae62a84f8, type: 3}
   bossSpawnDelay: 20
   bossBannerDuration: 3
+  enemyTimer: 5
   crateDelay: 15
 --- !u!4 &557962292
 Transform:
@@ -5615,6 +5616,9 @@ MonoBehaviour:
   bulletText: {fileID: 539556594}
   torpedoText: {fileID: 446842734}
   seekerText: {fileID: 1777387987}
+  bulletReload: 1
+  torpedoReload: 2
+  seekerReload: 3
   smallExplosionPrefab: {fileID: 5986737659009389610, guid: c5ae1f516955c222bae82617e65f291c, type: 3}
   explosionPrefab: {fileID: 4031796529509398988, guid: d158945f86bbf923ea0fc630234d6ae5, type: 3}
   flameEffect: {fileID: 1063709969}

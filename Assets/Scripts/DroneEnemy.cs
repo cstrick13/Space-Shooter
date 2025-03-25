@@ -7,7 +7,7 @@ public class DroneEnemy : MonoBehaviour
 {
     public GameObject target;
     public float moveSpeed;
-    public float lives = 4;
+    public float lives = 3;
 
     public ParticleSystem smallExplosionPrefab;
     // Start is called before the first frame update
