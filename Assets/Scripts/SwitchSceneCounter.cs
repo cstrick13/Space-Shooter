@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SwitchSceneCounter : MonoBehaviour
 {
-      public GameObject background;         // Drag your “Background” GameObject here
+    public GameObject background;         // Drag your “Background” GameObject here
     public GameObject particleSystemObj;  // Drag your Particle System GameObject here
     public float delaySeconds = 15f;
 
