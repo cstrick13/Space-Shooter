@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Game : MonoBehaviour
     public GameObject fallingObstaclePrefab;
     public GameObject bulletEnemyPrefab;
     public GameObject bossPrefab;
+    public GameObject flashbangPIC;
 
  
     public float bossSpawnDelay = 30f;
@@ -36,6 +38,7 @@ public class Game : MonoBehaviour
 
     public static Game Instance { get; private set; }
     public static GameControls Input { get; private set; }
+    public float alpha = 1f;
 
     void Start()
     {
@@ -53,18 +56,24 @@ public class Game : MonoBehaviour
 
     void Update()
     {
-         if (!bossSpawned)
-    {
-        enemyTimer -= Time.deltaTime;
-        if (enemyTimer <= 0f)
-        {
-            Instantiate(enemyPrefab);
-            Instantiate(droneEnemyPrefab);
-            Instantiate(shootingEnemyPrefab);
-            Instantiate(bulletEnemyPrefab);
-            enemyTimer = Random.Range(2f, 7f);
+
+        if (flashbangPIC.activeInHierarchy){
+            flashbangPIC.GetComponent<Image>().color = new Color(255f, 255f, 255f, alpha);
+            alpha -= 0.005f; 
+            Debug.Log(1);   
         }
-    }
+         if (!bossSpawned)
+        {
+            enemyTimer -= Time.deltaTime;
+            if (enemyTimer <= 0f)
+            {
+                Instantiate(enemyPrefab);
+                Instantiate(droneEnemyPrefab);
+                Instantiate(shootingEnemyPrefab);
+                Instantiate(bulletEnemyPrefab);
+                enemyTimer = Random.Range(2f, 7f);
+            }
+        }
 
     // Boss spawn logic
     if (!bossSpawned)
@@ -105,6 +114,8 @@ public class Game : MonoBehaviour
 
     txtScore.text = score.ToString("000000");
     if (score < 0) Debug.Log("Game Over");
+
+
     }
 
     private void ShowBossBanner()
@@ -127,5 +138,9 @@ public class Game : MonoBehaviour
             foreach (GameObject go in GameObject.FindGameObjectsWithTag(tag))
                 Destroy(go);
         }
+    }
+
+    public void die(){
+        flashbangPIC.SetActive(true);
     }
 }

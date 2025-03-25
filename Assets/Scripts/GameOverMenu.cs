@@ -1,14 +1,22 @@
+using System.Collections;
+using System.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour
 {
    [SerializeField] GameObject gameOver;
-    public void Pause(){
+
+    public void GameOver(){
         gameOver.SetActive(true);
         Time.timeScale = 0;
+        //StartCoroutine(MenuAppear());
     }
-
+    //IEnumerator MenuAppear(){
+        //yield return new WaitForSeconds(1f);
+        //gameOver.SetActive(true);
+        //Time.timeScale = 0;
+    //}
    
     public void Home(){
         SceneManager.LoadScene("MainMenu");

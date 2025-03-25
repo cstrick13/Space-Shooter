@@ -12,6 +12,7 @@ public class Player : MonoBehaviour{
     public GameObject torpedoPrefab;
     public GameObject seekerPrefab;
     public Transform spawnPt;
+    public Game gameScript;
 
     public bool hasSeeker = false;
     public int lives = 6;
@@ -35,10 +36,12 @@ public class Player : MonoBehaviour{
     public ParticleSystem flameEffect;
 
     public float explosionDuration = 1.0f;
+    GameOverMenu MyScript;
 
     // Start is called before the first frame update
     void Start() {
-     
+        GameObject obj = GameObject.Find("Game");
+        MyScript = obj.GetComponent<GameOverMenu>();
     }
 
     // Update is called once per frame
@@ -138,7 +141,9 @@ public class Player : MonoBehaviour{
         if (lives <= 0)
         {
             Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            gameScript.die();
+            Destroy(gameObject);            
+            MyScript.GameOver();
             // Game Over here
         }
     }
@@ -153,6 +158,8 @@ public class Player : MonoBehaviour{
 
         if (lives <= 0)
         {
+            MyScript.GameOver(); 
+            gameScript.die();
             Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
             Destroy(gameObject);
             // Game Over here
