@@ -109,12 +109,11 @@ public class Game : MonoBehaviour
         {
             ClearAllRegularEnemies();
                // Falling obstacles (unchanged)
-            fallingObstacleTimer -= Time.deltaTime;
-            if (fallingObstacleTimer <= 0f)
-        {
-        Instantiate(fallingObstaclePrefab);
-        fallingObstacleTimer = Random.Range(2f, 7f);
-        }
+                fallingObstacleTimer -= Time.deltaTime;
+                if (fallingObstacleTimer <= 0f){
+                    Instantiate(fallingObstaclePrefab);
+                    fallingObstacleTimer = Random.Range(2f, 7f);
+                    }
             Instantiate(bossPrefab);
             bossSpawned = true;
             bossincoming.SetActive(false);
