@@ -29,7 +29,9 @@ public class Player : MonoBehaviour{
     public float bulletReload;
     public float torpedoReload;
     public float seekerReload;
-    private Coroutine reloadDelay;
+    public Coroutine bulletDelay;
+    public Coroutine torpedoDelay;
+    public Coroutine seekerDelay;
 
     public AudioClip clipBullet;
 
@@ -71,7 +73,11 @@ public class Player : MonoBehaviour{
             if (bulletAmmo > 0)
             {
                 //Could break music
-                StopAllCoroutines();
+                //StopAllCoroutines();
+                if (bulletDelay != null)
+                {
+                    StopCoroutine(bulletDelay);
+                }
                 audioSrc.clip = clipBullet;
                 audioSrc.Play();
                 bulletAmmo--;
@@ -82,8 +88,8 @@ public class Player : MonoBehaviour{
             else
             {
                 //Delay the reload
-                float timer = 1.5f;
-                reloadDelay = StartCoroutine(ReloadDelay(timer, 0));
+                float timer = bulletReload;
+                bulletDelay = StartCoroutine(ReloadDelay(timer, 0));
             }
         }
         if (input.ShootTorpedo.WasPressedThisFrame())
@@ -91,7 +97,10 @@ public class Player : MonoBehaviour{
             print(torpedoAmmo);
             if (torpedoAmmo > 0)
             {
-                StopAllCoroutines();
+                if (torpedoDelay != null)
+                {
+                    StopCoroutine(torpedoDelay);
+                }
                 audioSrc.clip = clipTorpedo;
                 audioSrc.Play();
                 torpedoAmmo--;
@@ -102,8 +111,8 @@ public class Player : MonoBehaviour{
             else
             {
                 //Delay the reload
-                float timer = 2.5f;
-                reloadDelay = StartCoroutine(ReloadDelay(timer, 1));
+                float timer = torpedoReload;
+                torpedoDelay = StartCoroutine(ReloadDelay(timer, 1));
             }
         }
         if (input.ShootSeeker.WasPressedThisFrame() && hasSeeker == true)
@@ -111,7 +120,10 @@ public class Player : MonoBehaviour{
             print(seekerAmmo);
             if (seekerAmmo > 0)
             {
-                StopAllCoroutines();
+                if (seekerDelay != null)
+                {
+                    StopCoroutine(seekerDelay);
+                }
                 audioSrc.clip = clipSeeker;
                 audioSrc.Play();
                 seekerAmmo--;
@@ -122,8 +134,8 @@ public class Player : MonoBehaviour{
             else
             {
                 //Delay the reload
-                float timer = 3.5f;
-                reloadDelay = StartCoroutine(ReloadDelay(timer, 2));
+                float timer = seekerReload;
+                seekerDelay = StartCoroutine(ReloadDelay(timer, 2));
             }
             // Refresh ammo counts every frame
 

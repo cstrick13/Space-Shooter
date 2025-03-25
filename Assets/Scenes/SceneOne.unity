@@ -6306,9 +6306,9 @@ MonoBehaviour:
   bulletText: {fileID: 539556594}
   torpedoText: {fileID: 446842734}
   seekerText: {fileID: 1777387987}
-  bulletReload: 0
-  torpedoReload: 0
-  seekerReload: 0
+  bulletReload: 1
+  torpedoReload: 2.5
+  seekerReload: 2
   clipBullet: {fileID: 8300000, guid: 7f6c1bed101ddb6e39eecd78e44697fc, type: 3}
   clipTorpedo: {fileID: 8300000, guid: 5b9941d7ffc96ca728116754afa9de87, type: 3}
   clipSeeker: {fileID: 8300000, guid: 38d5a4d87e75e8805aae69dd6c681bdf, type: 3}
