@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 public class SwitchSceneCounter : MonoBehaviour
 {
     public GameObject background;         // Drag your “Background” GameObject here
+
+     public GameObject background2;  
     public GameObject particleSystemObj;  // Drag your Particle System GameObject here
-    public float delaySeconds = 22f;
+    public float delaySeconds = 23.4f;
+
+    public float delaySeconds2 = 40f;
 
     private float startTime;
 
@@ -17,6 +21,7 @@ public class SwitchSceneCounter : MonoBehaviour
 
         // Make sure background starts disabled; particle stays enabled until the swap
         if (background != null) background.SetActive(false);
+         if (background2 != null) background.SetActive(false);
         if (particleSystemObj != null) particleSystemObj.SetActive(true);
     }
 
@@ -25,6 +30,13 @@ public class SwitchSceneCounter : MonoBehaviour
         if (Time.time - startTime > delaySeconds)
         {
             if (background != null) background.SetActive(true);
+
+            enabled = false;
+        }
+
+           if (Time.time - startTime > delaySeconds2)
+        {
+            if (background2 != null) background.SetActive(true);
 
             enabled = false;
         }

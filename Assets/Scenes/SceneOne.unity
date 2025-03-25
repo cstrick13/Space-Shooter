@@ -4387,8 +4387,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 1605317719}
+  background2: {fileID: 1449194387}
   particleSystemObj: {fileID: 588483746}
   delaySeconds: 23.4
+  delaySeconds2: 40
 --- !u!114 &557962294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14015,7 +14017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1449194388
 Transform:
   m_ObjectHideFlags: 0
