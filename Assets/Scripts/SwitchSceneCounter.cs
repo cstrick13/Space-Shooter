@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SwitchSceneCounter : MonoBehaviour
 {
-    public GameObject background;         // Drag your “Background” GameObject here
-
-     public GameObject background2;  
-    public GameObject particleSystemObj;  // Drag your Particle System GameObject here
-    public float delaySeconds = 23.4f;
-
-    public float delaySeconds2 = 40f;
+    public GameObject background;         // First background
+    public GameObject background2;        // Second background
+    public GameObject particleSystemObj;  // Particle System GameObject
+    public float delaySeconds = 23.4f;      // Delay for first background activation
+    public float delaySeconds2 = 40f;       // Delay for second background activation
 
     private float startTime;
 
@@ -19,27 +17,27 @@ public class SwitchSceneCounter : MonoBehaviour
     {
         startTime = Time.time;
 
-        // Make sure background starts disabled; particle stays enabled until the swap
+        // Ensure both backgrounds start disabled; particle system stays enabled until the swap
         if (background != null) background.SetActive(false);
-         if (background2 != null) background.SetActive(false);
+        if (background2 != null) background2.SetActive(false);
         if (particleSystemObj != null) particleSystemObj.SetActive(true);
     }
 
     void Update()
     {
-        if (Time.time - startTime > delaySeconds)
+        // Activate the first background after delaySeconds seconds.
+        if (Time.time - startTime > delaySeconds && background != null && !background.activeSelf)
         {
-            if (background != null) background.SetActive(true);
-
-            enabled = false;
+            background.SetActive(true);
         }
 
-           if (Time.time - startTime > delaySeconds2)
+        // After delaySeconds2 seconds, switch to the second background.
+        if (Time.time - startTime > delaySeconds2)
         {
-            if (background2 != null) background.SetActive(true);
-
+            if (background != null) background.SetActive(false);
+            if (background2 != null) background2.SetActive(true);
+            // Optionally disable this script if no further updates are needed.
             enabled = false;
         }
     }
-
 }
