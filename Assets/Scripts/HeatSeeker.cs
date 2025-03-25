@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -43,8 +44,11 @@ public class HeatSeeker : MonoBehaviour
                 float distance = Vector3.Distance(currentPos, target.transform.position);
                 if (distance < minDistance)
                 {
-                    nearest = target;
-                    minDistance = distance;
+                    if (target.name != "EnemyBullet")
+                    {
+                        nearest = target;
+                        minDistance = distance;
+                    }
                 }
             }
 

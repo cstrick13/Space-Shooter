@@ -23,7 +23,7 @@ public class ShootingEnemy : MonoBehaviour{
     void Start()
     {
         // Optionally set initial position here if needed:
-        GetComponent<Rigidbody2D>().AddForce(Vector2.left * Random.Range(25f, 75f));
+        GetComponent<Rigidbody2D>().AddForce(Vector2.left * Random.Range(50f, 75f));
         Vector3 initPos = new Vector3(12, Random.Range(-3f, 3f), 0);
         transform.position = initPos;
     }
