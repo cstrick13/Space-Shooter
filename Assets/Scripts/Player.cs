@@ -162,12 +162,12 @@ public class Player : MonoBehaviour{
             // Game over: play the big explosion sound only.
             AudioSource.PlayClipAtPoint(explosionAudio, collision.transform.position, 1.5f);
             Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
-            gameScript.die();
             Destroy(gameObject);            
-            MyScript.GameOver();
             // Game Over here
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            MyScript.GameOver(); 
+            gameScript.die();
         }
         else
         {
@@ -188,11 +188,11 @@ public class Player : MonoBehaviour{
 
         if (lives <= 0)
         {
-            MyScript.GameOver(); 
-            gameScript.die();
             Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
             AudioSource.PlayClipAtPoint(explosionAudio, collision.transform.position,1.5f);
             Destroy(gameObject);
+            MyScript.GameOver(); 
+            gameScript.die();
             // Game Over here
         }
       

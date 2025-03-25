@@ -24,6 +24,9 @@ public class Game : MonoBehaviour
     public GameObject bossPrefab;
     public GameObject flashbangPIC;
 
+    GameOverMenu MyScript;
+
+
  
     public float bossSpawnDelay = 50f;
     public float bossBannerDuration = 6f;
@@ -56,6 +59,8 @@ public class Game : MonoBehaviour
         crateSpawned = false;
         fallingObstacleTimer = 1f;
         bossTimer = bossSpawnDelay;
+        GameObject obj = GameObject.Find("Game");
+        MyScript = obj.GetComponent<GameOverMenu>();
 
         if (bossincoming != null){
             bossincoming.SetActive(false);
@@ -129,8 +134,10 @@ public class Game : MonoBehaviour
 
 
     txtScore.text = score.ToString("000000");
-    if (score < 0) Debug.Log("Game Over");
-
+    if (score < 0){
+         MyScript.GameOver();
+         this.die();
+    }
 
     }
 
