@@ -38,8 +38,8 @@ public class NormalEnemySpawn : MonoBehaviour
         if (lives <= 0)
         {
              Instantiate(smallExplosionPrefab, collision.transform.position, Quaternion.identity);
-              AudioSource.PlayClipAtPoint(smallexplosionAudio, transform.position);
-            Game.Instance.AddToScore(60);
+             AudioSource.PlayClipAtPoint(smallexplosionAudio, transform.position);
+              Game.Instance.AddToScore(60);
             Destroy(gameObject);
         }
         return;

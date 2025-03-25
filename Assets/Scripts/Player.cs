@@ -82,7 +82,7 @@ public class Player : MonoBehaviour{
             else
             {
                 //Delay the reload
-                float timer = bulletReload;
+                float timer = 1.5f;
                 reloadDelay = StartCoroutine(ReloadDelay(timer, 0));
             }
         }
@@ -102,7 +102,7 @@ public class Player : MonoBehaviour{
             else
             {
                 //Delay the reload
-                float timer = torpedoReload;
+                float timer = 2.5f;
                 reloadDelay = StartCoroutine(ReloadDelay(timer, 1));
             }
         }
@@ -122,7 +122,7 @@ public class Player : MonoBehaviour{
             else
             {
                 //Delay the reload
-                float timer = seekerReload;
+                float timer = 3.5f;
                 reloadDelay = StartCoroutine(ReloadDelay(timer, 2));
             }
             // Refresh ammo counts every frame
@@ -226,8 +226,5 @@ public class Player : MonoBehaviour{
         {
             seekerAmmo = seekerMax;
         }
-
-          audioSrc.clip = clipReload;
-          audioSrc.Play();
     }
 }
