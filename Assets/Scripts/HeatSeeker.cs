@@ -44,8 +44,9 @@ public class HeatSeeker : MonoBehaviour
                 float distance = Vector3.Distance(currentPos, target.transform.position);
                 if (distance < minDistance)
                 {
-                    if (target.name != "EnemyBullet")
+                    if (target.name != "EnemyBullet(Clone)")
                     {
+                        print(target.name);
                         nearest = target;
                         minDistance = distance;
                     }
